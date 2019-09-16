@@ -2,6 +2,7 @@
 .DS_Store
 *.settings
 *.project
-LICENSE
-.swagger-codegen
+/.swagger-codegen
 /swagger-codegen
+/composer.lock
+/vendor
