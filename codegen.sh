@@ -37,6 +37,9 @@ docker run --rm -it \
 
 done
 
+mkdir -p "${SCRIPTDIR}/src/Api/"
+mkdir -p "${SCRIPTDIR}/src/Model/"
+
 cp -R "${build_dir}/Client/src/Api/." "${SCRIPTDIR}/src/Api/"
 cp -R "${build_dir}/Client/src/Model/." "${SCRIPTDIR}/src/Model/"
 cp "${build_dir}/Client/src/ApiClient.php" "${SCRIPTDIR}/src/"
