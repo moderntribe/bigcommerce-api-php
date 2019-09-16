@@ -1,6 +1,6 @@
 swagger: '2.0'
-host: "api.bigcommerce.com"
-basePath: "/stores/{{store_id}}/v3"
+host: api.bigcommerce.com
+basePath: "/stores/{store_id}/v3"
 info:
   title: Product Pricing API
   description: 'API to provide marketing/display pricing for products, variants, and partially configured selections.'

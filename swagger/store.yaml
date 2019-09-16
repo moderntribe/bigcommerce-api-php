@@ -5,7 +5,7 @@ info:
   title: Store Information APIs
   description: The Store Information object, and Get Store Information endpoint, manage store profile settings.
 host: api.bigcommerce.com
-basePath: "/stores/{store_hash}/v2"
+basePath: "/stores/{store_id}/v2"
 tags:
   - name: Store Info
 schemes:

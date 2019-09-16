@@ -2,7 +2,7 @@ swagger: '2.0'
 info:
   title: Sites & Routes
   version: '0.0.1'
-host: "api.bigcommerce.com"
+host: api.bigcommerce.com
 basePath: "/stores/{store_id}/v3"
 tags:
 - name: Sites

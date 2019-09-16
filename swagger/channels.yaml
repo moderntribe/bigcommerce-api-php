@@ -3,7 +3,8 @@ info:
   version: '1.0'
   title: "BigCommerce Channels API"
   description: The Channels API enables you to create and manage listings across a BigCommerce merchant's sales channels.
-host: "api.bigcommerce.com"
+host: api.bigcommerce.com
+basePath: "/stores/{store_id}/v3"
 tags:
   - name: Channels
     description: BigCommerce Channels API Definition.

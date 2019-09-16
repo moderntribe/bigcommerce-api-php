@@ -4,7 +4,7 @@ info:
   title: Wishlist API
   description: "The Wishlist API allows a developer to create and manage customer Wishlists."
 host: api.bigcommerce.com
-basePath: "/stores/{{store_id}}/v3"
+basePath: "/stores/{store_id}/v3"
 tags:
   - name: Wishlists
     description: ''

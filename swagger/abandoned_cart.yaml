@@ -2,7 +2,7 @@ swagger: '2.0'
 info:
   title: Data Model for BigCommerce's v3 Server-to-Server Abandoned  Cart API
   version: v0.0.1
-host: "api.bigcommerce.com"
+host: api.bigcommerce.com
 basePath: "/stores/{store_id}/v3"
 tags:
   - name: AbandonedCart

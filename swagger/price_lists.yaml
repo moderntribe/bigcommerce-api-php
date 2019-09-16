@@ -4,8 +4,8 @@ info:
   version: 3.0.0b
   description: A Swagger Document for the BigCommmerce v3 Price Lists API.
   termsOfService: "http://www.bigcommerce.com/terms"
-host: "api.bigcommerce.com"
-basePath: "/stores/{{store_id}}/v3"
+host: api.bigcommerce.com
+basePath: "/stores/{store_id}/v3"
 tags:
   - name: PriceLists
     description: BigCommerce Price Lists API Definition.
