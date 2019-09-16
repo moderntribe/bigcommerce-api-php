@@ -1,0 +1,410 @@
+swagger: "2.0"
+info:
+  title: BigCommerce API
+  version: 3.0.0b
+  description: A Swagger Document for the BigCommmerce v3 Themes API.
+  termsOfService: "http://www.bigcommerce.com/terms"
+host: "api.bigcommerce.com"
+basePath: "/stores/{{store_id}}/v3"
+tags:
+  - name: Themes
+    description: BigCommerce Themes API Definition.
+schemes:
+  - https
+produces:
+  - application/json
+consumes:
+  - application/json
+paths:
+  /themes:
+    get:
+      tags:
+        - Themes
+      operationId: getStoreThemes
+      summary: Gets all store themes.
+      responses:
+        200:
+          description: Returns all themes associated with the BigCommerce store.
+          schema:
+            $ref: "#/definitions/ThemesCollectionResponse"
+        default:
+          description: Error message.
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+    post:
+      tags:
+        - Themes
+      operationId: uploadTheme
+      summary: Uploads a new theme to a BigCommerce store.
+      consumes:
+      - multipart/form-data
+      parameters:
+      - name: file
+        description: The file.
+        in: formData
+        type: file
+        required: true
+      responses:
+        201:
+          description: Job ID for the background job processing the theme upload.
+          schema:
+            $ref: "#/definitions/JobId"
+        default:
+          description: Error message.
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+  /themes/{theme_id}:
+    get:
+      tags:
+        - Themes
+      operationId: getStoreTheme
+      summary: Gets a specified store theme.
+      parameters:
+      - $ref: "#/parameters/ThemeIdParam"
+      responses:
+        200:
+          description: The theme.
+          schema:
+            $ref: "#/definitions/ThemeResponse"
+        default:
+          description: Error message.
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+    delete:
+      tags:
+        - Themes
+      operationId: deleteStoreTheme
+      summary: Deletes a specified store theme.
+      parameters:
+      - $ref: "#/parameters/ThemeIdParam"
+      responses:
+        204:
+          description: |
+            No content found to fulfill the request.
+          schema:
+            $ref: "#/definitions/NoContent"
+        default:
+          description: Error message.
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+  /themes/{theme_id}/actions/download:
+    parameters:
+      - $ref: "#/parameters/ThemeIdParam"
+    post:
+      tags:
+        - Themes
+      operationId: downloadTheme
+      summary: Downloads a specified store theme.
+      parameters:
+      - name: which
+        in: body
+        required: true
+        description: |
+          A BigCommerce object specifying which theme to download. One of: `original`: the original Marketplace or uploaded custom theme; `last_activated`: the theme version most recently applied to the store; `last_created`: the theme version most recently created. If `which` is missing or invalid in the request, its value will default to `last_activated`.
+        schema:
+          $ref: "#/definitions/WhichThemeToDownload"
+      responses:
+        200:
+          description: |
+            Job ID for the background job processing the download.
+          schema:
+            $ref: "#/definitions/JobId"
+        default:
+          description: Error message.
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+  /themes/actions/activate:
+    post:
+      tags:
+        - Themes
+      operationId: activateStoreTheme
+      summary: Activates a store theme.
+      parameters:
+      - name: body
+        description: Request parameters.
+        in: body
+        required: true
+        schema:
+          $ref: "#/definitions/Activate"
+      responses:
+        204:
+          description: |
+            No content found to fulfill the request.
+          schema:
+            $ref: "#/definitions/NoContent"
+        default:
+          description: Error message.
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+  /themes/jobs/{job_id}:
+    get:
+      tags:
+        - Themes
+      operationId: getJob
+      summary: Gets a specified job.
+      parameters:
+      - $ref: "#/parameters/JobIdParam"
+      responses:
+        200:
+          description: The job.
+          schema:
+            $ref: "#/definitions/JobResponse"
+        default:
+          description: Error message.
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+parameters:
+  JobIdParam:
+    name: job_id
+    description: The job identifier.
+    in: path
+    type: string
+    required: true
+  ThemeIdParam:
+    name: theme_id
+    description: The theme identifier.
+    in: path
+    type: string
+    required: true
+definitions:
+  CollectionMeta:
+      type: object
+      description: |
+        Data about the response, including pagination and collection totals.
+      properties:
+        pagination:
+          $ref: "#/definitions/Pagination"
+  Pagination:
+      type: object
+      description: |
+        Data about the response, including pagination and collection totals.
+      properties:
+        total:
+          type: integer
+          description: |
+            Total number of items in the result set.
+        count:
+          type: integer
+          description: |
+            Total number of items in the collection response.
+        per_page:
+          type: integer
+          description: |
+            The amount of items returned in the collection per page, controlled by the limit parameter.
+        current_page:
+          type: integer
+          description: |
+            The page you are currently on within the collection.
+        total_pages:
+          type: integer
+          description: |
+            The total number of pages in the collection.
+        links:
+          type: object
+          description: |
+            Pagination links for the previous and next parts of the whole collection.
+          properties:
+            previous:
+              type: string
+              description: |
+                Link to the previous page returned in the response.
+            current:
+              type: string
+              description: |
+                Link to the current page returned in the response.
+            next:
+              type: string
+              description: |
+                Link to the next page returned in the response.
+  Meta:
+    type: object
+    description: Empty meta object; may be used later.
+  ErrorResponse:
+    allOf:
+    - $ref: "#/definitions/BaseError"
+    - type: object
+      properties:
+        errors:
+          $ref: "#/definitions/DetailedErrors"
+  BaseError:
+    type: object
+    description: |
+      Error payload for the BigCommerce API.
+    properties:
+      status:
+        description: |
+          The HTTP status code.
+        type: integer
+      title:
+        description: |
+          The error title describing the particular error.
+        type: string
+      type:
+        type: string
+      instance:
+        type: string
+  DetailedErrors:
+    type: object
+    additionalProperties:
+      type: string
+  NoContent:
+    description: |
+      No-content response for the BigCommerce API.
+    type: object
+    properties:
+      status:
+        description: |
+          204 HTTP status code.
+        type: integer
+      title:
+        description: The error title describing the situation.
+        type: string
+      type:
+        type: string
+      instance:
+        type: string
+  Job:
+    description: A job.
+    type: object
+    properties:
+      errors:
+        description: The errors.
+        type: array
+        items:
+          type: object
+          properties:
+            error:
+              description: The error.
+              type: string
+            message:
+              description: The message.
+              type: string
+      id:
+        description: The identifier.
+        type: string
+      percent_complete:
+        description: The percent complete.
+        type: number
+      result:
+        description: The result.
+        type: object
+        additionalProperties:
+          type: string
+      status:
+        description: The status.
+        type: string
+      time:
+        description: The time.
+        type: string
+      warnings:
+        description: The warnings.
+        type: array
+        items:
+          type: object
+          properties:
+            message:
+              description: The message.
+              type: string
+            warning:
+              description: The warning.
+              type: string
+  Theme:
+    description: A theme.
+    type: object
+    properties:
+      variations:
+        description: The variations.
+        type: array
+        items:
+          $ref: "#/definitions/Variation"
+      uuid:
+        description: The identifier.
+        type: string
+      name:
+        description: The theme name identifier.
+        type: string
+      is_private:
+        description: Flag to identify private themes.
+        type: boolean
+  Variation:
+    description: A variation.
+    type: object
+    properties:
+      description:
+        description: The description.
+        type: string
+      external_id:
+        description: The external identifier.
+        type: string
+      name:
+        description: The name.
+        type: string
+      uuid:
+        description: The identifier.
+        type: string
+  JobId:
+    description: The job identifier.
+    type: object
+    properties:
+      job_id:
+        description: The job identifier.
+        type: string
+  Activate:
+    description: Request definition for activation endpoint.
+    required:
+      - variation_id
+      - which
+    properties:
+      variation_id:
+        description: The identifier for the variation to activate.
+        type: string
+      which:
+        description: Which configuration to use.
+        type: string
+        enum:
+          - original
+          - last_activated
+          - last_created
+  ThemesCollectionResponse:
+    description: |
+      Response payload for the BigCommerce API.
+    type: object
+    properties:
+      data:
+        type: array
+        items:
+          $ref: "#/definitions/Theme"
+      meta:
+        $ref: "#/definitions/CollectionMeta"
+  ThemeResponse:
+    description: |
+      Response payload for the BigCommerce API.
+    type: object
+    properties:
+      data:
+        $ref: "#/definitions/Theme"
+      meta:
+        $ref: "#/definitions/Meta"
+  JobResponse:
+    description: |
+      Response payload for the BigCommerce API.
+    type: object
+    properties:
+      data:
+        $ref: "#/definitions/Job"
+      meta:
+        $ref: "#/definitions/Meta"
+  WhichThemeToDownload:
+      type: object
+      description: |
+        An object specifying which theme to download. One of: `original`: the original Marketplace or uploaded custom theme; `last_activated`: the theme version most recently applied to the store; `last_created`: the theme version most recently created.
+      allOf:
+        - type: object
+          properties:
+            which:
+              description: Which revision to use.
+              type: string
+              enum:
+                - original
+                - last_activated
+                - last_created
