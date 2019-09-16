@@ -71,7 +71,6 @@ class StoreInformation implements ArrayAccess
         'industry' => 'string',
         'logo' => '\BigCommerce\Api\Model\Logo',
         'is_price_entered_with_tax' => 'bool',
-        'active_comparison_modules' => 'null[]',
         'features' => '\BigCommerce\Api\Model\StoreFeatures'
     ];
 
@@ -117,7 +116,6 @@ class StoreInformation implements ArrayAccess
         'industry' => 'industry',
         'logo' => 'logo',
         'is_price_entered_with_tax' => 'is_price_entered_with_tax',
-        'active_comparison_modules' => 'active_comparison_modules',
         'features' => 'features'
     ];
 
@@ -158,7 +156,6 @@ class StoreInformation implements ArrayAccess
         'industry' => 'setIndustry',
         'logo' => 'setLogo',
         'is_price_entered_with_tax' => 'setIsPriceEnteredWithTax',
-        'active_comparison_modules' => 'setActiveComparisonModules',
         'features' => 'setFeatures'
     ];
 
@@ -199,7 +196,6 @@ class StoreInformation implements ArrayAccess
         'industry' => 'getIndustry',
         'logo' => 'getLogo',
         'is_price_entered_with_tax' => 'getIsPriceEnteredWithTax',
-        'active_comparison_modules' => 'getActiveComparisonModules',
         'features' => 'getFeatures'
     ];
 
@@ -266,7 +262,6 @@ class StoreInformation implements ArrayAccess
         $this->container['industry'] = array_key_exists('industry', $data) ? $data['industry'] : null;
         $this->container['logo'] = array_key_exists('logo', $data) ? $data['logo'] : null;
         $this->container['is_price_entered_with_tax'] = array_key_exists('is_price_entered_with_tax', $data) ? $data['is_price_entered_with_tax'] : null;
-        $this->container['active_comparison_modules'] = array_key_exists('active_comparison_modules', $data) ? $data['active_comparison_modules'] : null;
         $this->container['features'] = array_key_exists('features', $data) ? $data['features'] : null;
     }
 
@@ -970,27 +965,6 @@ class StoreInformation implements ArrayAccess
     public function setIsPriceEnteredWithTax($is_price_entered_with_tax)
     {
         $this->container['is_price_entered_with_tax'] = $is_price_entered_with_tax;
-
-        return $this;
-    }
-
-    /**
-     * Gets active_comparison_modules
-     * @return null[]
-     */
-    public function getActiveComparisonModules()
-    {
-        return $this->container['active_comparison_modules'];
-    }
-
-    /**
-     * Sets active_comparison_modules
-     * @param null[] $active_comparison_modules 
-     * @return $this
-     */
-    public function setActiveComparisonModules($active_comparison_modules)
-    {
-        $this->container['active_comparison_modules'] = $active_comparison_modules;
 
         return $this;
     }

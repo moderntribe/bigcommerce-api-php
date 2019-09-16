@@ -176,10 +176,6 @@ definitions:
           with tax.
         example: false
         type: boolean
-      active_comparison_modules:
-        description: ''
-        type: array
-        items: {}
       features:
         $ref: "#/definitions/StoreFeatures"
   Timezone:

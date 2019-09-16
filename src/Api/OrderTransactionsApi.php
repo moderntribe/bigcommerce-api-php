@@ -1,6 +1,6 @@
 <?php
 /**
- * OrdersApi
+ * OrderTransactionsApi
  *
  * @package  BigCommerce\Api
  */
@@ -27,7 +27,7 @@ use \BigCommerce\Api\ApiClient;
 use \BigCommerce\Api\ApiException;
 use \BigCommerce\Api\ObjectSerializer;
 
-class OrdersApi
+class OrderTransactionsApi
 {
 
     /**
@@ -62,7 +62,7 @@ class OrdersApi
     *
     * @param \BigCommerce\Api\ApiClient $apiClient set the API client
     *
-    * @return OrdersApi
+    * @return OrderTransactionsApi
     */
     public function setApiClient(\BigCommerce\Api\ApiClient $apiClient)
     {

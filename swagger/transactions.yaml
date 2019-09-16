@@ -7,7 +7,7 @@ info:
 host: api.bigcommerce.com
 basePath: "/stores/{store_id}/v3"
 tags:
-  - name: Orders
+  - name: Order Transactions
     description: BigCommerce Orders API Definition.
 schemes:
   - https
@@ -21,7 +21,7 @@ paths:
         - $ref: "#/parameters/OrderIdParam"
       get:
         tags:
-          - Orders
+          - Order Transactions
         description: |
           Returns a collection of `Transaction` objects related to a BigCommerce Order.
         operationId: getTransactions
@@ -43,7 +43,7 @@ paths:
               $ref: "#/definitions/NotFound"
       post:
         tags:
-          - Orders
+          - Order Transactions
         description: |
           Creates a new `Transaction` related to a BigCommerce Order.
         operationId: createTransaction
