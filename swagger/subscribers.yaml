@@ -2,12 +2,12 @@ swagger: "2.0"
 info:
   title: BigCommerce API
   version: 3.0.0b
-  description: A Swagger Document for the BigCommmerce v3 Customers API.
+  description: A Swagger Document for the BigCommmerce v3 Subscribers API.
   termsOfService: "http://www.bigcommerce.com/terms"
 host: "api.bigcommerce.com"
 basePath: "/stores/{{store_id}}/v3"
 tags:
-  - name: Customers
+  - name: Subscribers
     description: BigCommerce Customers API Definition.
 schemes:
   - https
@@ -19,7 +19,7 @@ paths:
   /customers/subscribers:
     get:
       tags:
-        - Customers
+        - Subscribers
       description: |
         Returns a paginated Subscribers collection.
       operationId: getSubscribers
@@ -41,7 +41,7 @@ paths:
             $ref: "#/definitions/SubscriberCollectionResponse"
     post:
       tags:
-        - Customers
+        - Subscribers
       description: |
         Creates a `Subscriber` object.
       operationId: createSubscriber
@@ -71,7 +71,7 @@ paths:
             $ref: "#/definitions/ErrorResponse"
     delete:
       tags:
-        - Customers
+        - Subscribers
       description: |
         Deletes a Subscriber or Subscribers from BigCommerce Customers.
       operationId: deleteSubscribers
@@ -92,7 +92,7 @@ paths:
       - $ref: "#/parameters/SubscriberIdParam"
     get:
       tags:
-        - Customers
+        - Subscribers
       description:
         Gets `Subscriber` object.
       operationId: getSubscriberById
@@ -109,7 +109,7 @@ paths:
             $ref: "#/definitions/NotFound"
     put:
       tags:
-        - Customers
+        - Subscribers
       description: |
         Updates a `Subscriber` object.
       operationId: updateSubscriber
@@ -144,7 +144,7 @@ paths:
             $ref: "#/definitions/ErrorResponse"
     delete:
       tags:
-        - Customers
+        - Subscribers
       description: |
         Deletes a `Subscriber` object.
       operationId: deleteSubscriberById

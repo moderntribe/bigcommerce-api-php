@@ -1,6 +1,6 @@
 <?php
 /**
- * CustomersApi
+ * SubscribersApi
  *
  * @package  BigCommerce\Api
  */
@@ -8,7 +8,7 @@
 /**
  * BigCommerce API
  *
- * A Swagger Document for the BigCommmerce v3 Customers API.
+ * A Swagger Document for the BigCommmerce v3 Subscribers API.
  *
  * OpenAPI spec version: 3.0.0b
  * 
@@ -29,7 +29,7 @@ use \BigCommerce\Api\ApiClient;
 use \BigCommerce\Api\ApiException;
 use \BigCommerce\Api\ObjectSerializer;
 
-class CustomersApi
+class SubscribersApi
 {
 
     /**
@@ -64,7 +64,7 @@ class CustomersApi
     *
     * @param \BigCommerce\Api\ApiClient $apiClient set the API client
     *
-    * @return CustomersApi
+    * @return SubscribersApi
     */
     public function setApiClient(\BigCommerce\Api\ApiClient $apiClient)
     {

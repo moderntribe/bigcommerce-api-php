@@ -8,7 +8,7 @@
 /**
  * BigCommerce API
  *
- * A Swagger Document for the BigCommmerce v3 Customers API.
+ * A Swagger Document for the BigCommmerce v3 Subscribers API.
  *
  * OpenAPI spec version: 3.0.0b
  * 

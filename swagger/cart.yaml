@@ -14,6 +14,7 @@ produces:
 paths:
   /carts:
     post:
+      operationId: createCart
       description: Creates a cart and generates a cart ID.
       parameters:
         - name: cartData
@@ -30,6 +31,7 @@ paths:
             $ref: "#/definitions/CartResponse"
   /carts/{cartId}/items:
     post:
+      operationId: addItem
       description: Adds line item(s) to the cart.
       parameters:
         - name: cartId
@@ -51,6 +53,7 @@ paths:
             $ref: "#/definitions/CartResponse"
   /carts/{cartId}/redirect_urls:
     post:
+      operationId: setRedirectUrls
       description: Creates a set of URLs to redirect the shopper to the BigCommerce store.
       parameters:
         - name: cartId
@@ -68,6 +71,7 @@ paths:
 
   /carts/{cartId}/items/{itemId}:
     put:
+      operationId: updateItem
       description: Updates an existing, single line item in the cart.
       parameters:
         - name: cartId
@@ -92,6 +96,7 @@ paths:
           schema:
             $ref: "#/definitions/CartResponse"
     delete:
+      operationId: deleteItem
       description: Removes a line item from the cart.
       parameters:
         - name: cartId
@@ -114,6 +119,7 @@ paths:
           description: If the action's result is an empty cart, the cart gets automatically deleted.
   /carts/{cartId}:
     get:
+      operationId: getCart
       description: Returns information about a given `Cart`, specified by its ID.
       parameters:
         - name: cartId
@@ -136,6 +142,7 @@ paths:
         404:
           description: Cart not found.
     put:
+      operationId: updateCart
       description: Modify a cart.
       parameters:
         - name: cartId
@@ -156,6 +163,7 @@ paths:
           schema:
             $ref: "#/definitions/Cart"
     delete:
+      operationId: deleteCart
       description: Removes the entire cart.
       parameters:
         - name: cartId
@@ -170,7 +178,6 @@ paths:
         204:
           description: An empty response.
 definitions:
-# --------------  common   -----------
   CartUpdateRequest:
     type: object
     properties:
