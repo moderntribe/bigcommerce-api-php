@@ -33,3 +33,40 @@ $ ./codegen.sh
 
 To clean up all files created by the build process, remove the directories
 `.swagger-codegen` and `~/.m2/repository`.
+
+
+## Adding new APIs
+
+### Create the Swagger YAML document
+
+1. Find the API in the [Dev Center API Reference](https://developer.bigcommerce.com/api-reference).
+2. Dowload the JSON version of the specification.
+3. Convert the [JSON to YAML](https://www.json2yaml.com/).
+4. Save the YAML in the `swagger` directory as `api-name.yaml` (e.g., `orders.yaml`).
+
+### Clean up the Swagger YAML
+
+1. Remove any nested object definitions in the parameters and responses, replacing them with references
+   to explicitly named objects in the `definitions` section. These objects become the Models of the generated code.
+2. Go through the `definitions` and break out any nested object definitions there into their own objects. Wherever
+   appropriate, share definitions where properties have the same structure.
+3. Ensure that each API operation is given an `operationId` property. These become the names of methods on the
+   API classes. The default names if you don't set the `operationId` are not human friendly.
+4. Ensure that each API operation has the same value for the `tags` property. The single tag used in each YAML
+   document becomes the name of the generated API class.
+5. Remove all large example blocks. These power the examples in the Dev Center, but serve no purpose here but to
+   add bloat to the YAML files.
+6. Remove all `enum` properties. The API does not return consistent values, and we would rather not have our API
+   client throwing fatal errors when the API returns an invalid value.
+7. Test each API operation against the real API to ensure that the responses you receive match the specification.
+   Frequently they do not; it is essential that this step be completed meticulously.
+
+### Compile the new API
+
+1. Add the name of the new YAML file to the list in the `apis` variable in `codegen.sh`, line 9.
+2. Run `./codegen.sh`
+
+### Add a factory method
+
+1. Add a new method for the API to `\BigCommerce\Api\ApiFactory`.
+2. The method should instantiate a new instance of the API class, passing it the v2 or v3 client as appropriate.
