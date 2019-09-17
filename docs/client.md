@@ -2,32 +2,36 @@
 
 ## Instantiating the API Client
 
-The first step to instantiating the API client is to create a configuration
+The first step to instantiating the API client is to create a factory
 object:
 
 ```php
-$config = new \BigCommerce\Api\Configuration();
-$config->setHost( $api_url );
-$config->setClientId( $client_id );
-$config->setAccessToken( $access_token );
-$config->setClientSecret( $client_secret ); // not required for most requests
+$api_url       = 'https://api.bigcommerce.com/stores/your-store-hash';
+$client_id     = 'your-client-id';
+$access_token  = 'your-access-token';
+$client_secret = 'your-client-secret';
+
+$api = new \BigCommerce\Api\ApiFactory( $api_url, $client_id, $access_token, $client_secret );
 ```
 
 You can find the required values in the BigCommerce admin when you create
 a new access token, or create an application that [uses OAuth to request
 an access token](/docs/examples/oauth-token.md).
 
-With the configuration in hand, create an instance of the ApiClient object.
+There are then a number of APIs that you can instantiate using the factory object:
 
 ```php
-$client = new \BigCommerce\Api\ApiClient( $config );
+$api->catalog();
+$api->cart();
+$api->channels();
+$api->sites();
 ```
 
-There are then a number of APIs that you can instantiate using the client object:
+## Usage Examples
 
-```php
-$catalog  = new \BigCommerce\Api\Api\CatalogApi( $client );
-$cart     = new \BigCommerce\Api\Api\CartApi( $client );
-$channels = new \BigCommerce\Api\Api\ChannelsApi( $client );
-$sites    = new \BigCommerce\Api\Api\SitesApi( $client );
-```
+* [Request products from the catalog](/docs/examples/catalog-get-products.md)
+* [Add a route to a site](/docs/examples/add-site-route.md)
+* [Create a product with variants and a modifier](/docs/examples/create-product.md)
+* [Update variants for a product](/docs/examples/udate-variants.md)
+* [Add a product to a cart](/docs/examples/add-to-cart.md)
+* [Create a widget](/docs/examples/create-widget.md)
