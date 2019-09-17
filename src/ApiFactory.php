@@ -82,6 +82,10 @@ class ApiFactory {
 		return new ChannelsApi( $this->v3Client );
 	}
 
+	public function orders() {
+		return new OrdersApi( $this->v2Client );
+	}
+
 	public function price_lists() {
 		return new PriceListsApi( $this->v3Client );
 	}
