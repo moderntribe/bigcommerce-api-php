@@ -361,10 +361,6 @@ definitions:
       which:
         description: Which configuration to use.
         type: string
-        enum:
-          - original
-          - last_activated
-          - last_created
   ThemesCollectionResponse:
     description: |
       Response payload for the BigCommerce API.
@@ -404,7 +400,3 @@ definitions:
             which:
               description: Which revision to use.
               type: string
-              enum:
-                - original
-                - last_activated
-                - last_created

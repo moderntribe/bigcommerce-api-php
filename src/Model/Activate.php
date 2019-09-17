@@ -90,24 +90,8 @@ class Activate implements ArrayAccess
         return self::$getters;
     }
 
-    const WHICH_ORIGINAL = 'original';
-    const WHICH_LAST_ACTIVATED = 'last_activated';
-    const WHICH_LAST_CREATED = 'last_created';
     
 
-    
-    /**
-     * Gets allowable values of the enum
-     * @return string[]
-     */
-    public function getWhichAllowableValues()
-    {
-        return [
-            self::WHICH_ORIGINAL,
-            self::WHICH_LAST_ACTIVATED,
-            self::WHICH_LAST_CREATED,
-        ];
-    }
     
 
     /**
@@ -149,10 +133,6 @@ class Activate implements ArrayAccess
         if ($this->container['which'] === null) {
             $invalid_properties[] = "'which' can't be null";
         }
-        $allowed_values = ["original", "last_activated", "last_created"];
-        if (!in_array($this->container['which'], $allowed_values)) {
-            $invalid_properties[] = "invalid value for 'which', must be one of #{allowed_values}.";
-        }
         return $invalid_properties;
     }
 
@@ -168,10 +148,6 @@ class Activate implements ArrayAccess
             return false;
         }
         if ($this->container['which'] === null) {
-            return false;
-        }
-        $allowed_values = ["original", "last_activated", "last_created"];
-        if (!in_array($this->container['which'], $allowed_values)) {
             return false;
         }
         return true;
@@ -215,10 +191,6 @@ class Activate implements ArrayAccess
      */
     public function setWhich($which)
     {
-        $allowed_values = ['original', 'last_activated', 'last_created'];
-        if (!is_null($which) && (!in_array($which, $allowed_values))) {
-            throw new \InvalidArgumentException("Invalid value for 'which', must be one of 'original', 'last_activated', 'last_created'");
-        }
         $this->container['which'] = $which;
 
         return $this;

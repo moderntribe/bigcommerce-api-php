@@ -161,30 +161,10 @@ definitions:
           type: string
           description: |
             Store event that created the transaction.
-          enum:
-            - purchase
-            - authorization
-            - capture
-            - refund
-            - void
-            - pending
-            - settled
         method:
           type: string
           description: |
             The payment method: `credit_card` - a credit-card transaction; `electronic_wallet` - an online wallet; `store_credit` - a transaction using store credit; `gift_certificate` - a transaction using a gift certificate; `custom` - manual payment methods; `token` - payment token; `nonce` - temporary payment token; `offsite` - online payment off the site (e.g., PayPal); `offline` - payment method that takes place offline.
-          enum:
-            - credit_card
-            - electronic_wallet
-            - gift_certificate
-            - store_credit
-            - apple_pay_card
-            - apple_pay_token
-            - token
-            - custom
-            - offsite
-            - offline
-            - nonce
         amount:
           type: number
           format: float
@@ -199,35 +179,6 @@ definitions:
           type: string
           description: |
             The payment gateway, where applicable.
-          enum:
-            - 2checkout
-            - adyen
-            - amazon
-            - authorizenet
-            - bankdeposit
-            - braintree
-            - cheque
-            - cod
-            - custom
-            - firstdatagge4
-            - giftcertificate
-            - hps
-            - instore
-            - klarna
-            - migs
-            - moneyorder
-            - nmi
-            - paypalexpress
-            - paypalpaymentsprous
-            - paypalpaymentsprouk
-            - plugnpay
-            - qbmsv2
-            - securenet
-            - square
-            - storecredit
-            - stripe
-            - testgateway
-            - usaepay
         gateway_transaction_id:
           description: |
             The transaction ID returned by the payment gateway for this transaction item.
@@ -245,9 +196,6 @@ definitions:
           type: string
           description: |
             Status of the transaction.
-          enum:
-            - ok
-            - error
         fraud_review:
           type: boolean
           description: |
@@ -395,12 +343,6 @@ definitions:
         description: |
           The status of a gift certificate: `active` - gift certificate is active; `pending` - gift certificate purchase is pending; `disabled` - gift certificate is disabled; `expired` - gift certificate is expired.
         type: string
-        enum:
-          - active
-          - pending
-          - disabled
-          - expired
-
   AVSResult:
     description: Address Verification Service (AVS) result from the payment gateway.
     type: object

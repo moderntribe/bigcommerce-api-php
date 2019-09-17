@@ -118,22 +118,8 @@ class Placement implements ArrayAccess
         return self::$getters;
     }
 
-    const STATUS_INACTIVE = 'inactive';
-    const STATUS_ACTIVE = 'active';
     
 
-    
-    /**
-     * Gets allowable values of the enum
-     * @return string[]
-     */
-    public function getStatusAllowableValues()
-    {
-        return [
-            self::STATUS_INACTIVE,
-            self::STATUS_ACTIVE,
-        ];
-    }
     
 
     /**
@@ -176,10 +162,6 @@ class Placement implements ArrayAccess
     public function listInvalidProperties()
     {
         $invalid_properties = [];
-        $allowed_values = ["inactive", "active"];
-        if (!in_array($this->container['status'], $allowed_values)) {
-            $invalid_properties[] = "invalid value for 'status', must be one of #{allowed_values}.";
-        }
         return $invalid_properties;
     }
 
@@ -191,10 +173,6 @@ class Placement implements ArrayAccess
      */
     public function valid()
     {
-        $allowed_values = ["inactive", "active"];
-        if (!in_array($this->container['status'], $allowed_values)) {
-            return false;
-        }
         return true;
     }
 
@@ -257,10 +235,6 @@ class Placement implements ArrayAccess
      */
     public function setStatus($status)
     {
-        $allowed_values = ['inactive', 'active'];
-        if (!is_null($status) && (!in_array($status, $allowed_values))) {
-            throw new \InvalidArgumentException("Invalid value for 'status', must be one of 'inactive', 'active'");
-        }
         $this->container['status'] = $status;
 
         return $this;

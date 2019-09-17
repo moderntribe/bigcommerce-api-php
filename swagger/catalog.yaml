@@ -2643,9 +2643,6 @@ parameters:
     required: false
     in: query
     type: string
-    enum:
-      - shopper
-      - merchant
   FilterStatusParam:
     name: status
     description: |
@@ -2660,12 +2657,6 @@ parameters:
     required: false
     in: query
     type: string
-    enum:
-      - variants
-      - images
-      - custom_fields
-      - bulk_pricing_rules
-      - primary_image
   FilterIncludeFieldsParam:
     name: include_fields
     description: |
@@ -2701,10 +2692,6 @@ parameters:
     required: false
     in: query
     type: string
-    enum:
-      - available
-      - disabled
-      - preorder
   FilterPriceListIdParam:
     name: price_list_id
     description: |
@@ -2733,9 +2720,6 @@ parameters:
     required: false
     in: query
     type: string
-    enum:
-      - asc
-      - desc
   ProductSortParam:
     name: sort
     description: |
@@ -2743,16 +2727,6 @@ parameters:
     required: false
     in: query
     type: string
-    enum:
-      - id
-      - name
-      - sku
-      - price
-      - date_modified
-      - date_last_imported
-      - inventory_level
-      - is_visible
-      - total_sold
   ProductIdParam:
     name: product_id
     in: path
@@ -2916,21 +2890,6 @@ definitions:
         type: string
         description: |
           BigCommerce API, which determines how it will display on the storefront. Acceptable values: `date`, `checkbox`, `file`, `text`, `multi_line_text`, `numbers_only_text`, `radio_buttons`, `rectangles`, `dropdown`, `product_list`, `product_list_with_images`, `swatch`. For reference, the former v2 API values are: D = date, C = checkbox, F = file, T = text, MT = multi_line_text, N = numbers_only_text, RB = radio_buttons, RT = rectangles, S = dropdown, P = product_list, PI = product_list_with_images, CS = swatch.
-        enum:
-          - date
-          - checkbox
-          - file
-          - text
-          - multi_line_text
-          - numbers_only_text
-          - radio_buttons
-          - rectangles
-          - dropdown
-          - product_list
-          - product_list_with_images
-          - swatch
-        x-required:
-          - post
       required:
         type: boolean
         description: |
@@ -3116,16 +3075,6 @@ definitions:
         type: string
         description: |
           The type of option, which determines how it will display on the storefront. Acceptable values: `radio_buttons`, `rectangles`, `dropdown`, `product_list`, `product_list_with_images`, `swatch`. For reference, the former v2 API values are: RB = radio_buttons, RT = rectangles, S = dropdown, P = product_list, PI = product_list_with_images, CS = swatch.
-        enum:
-          - radio_buttons
-          - rectangles
-          - dropdown
-          - product_list
-          - product_list_with_images
-          - swatch
-        x-required:
-          - post
-          - put
       config:
         $ref: "#/definitions/OptionConfig"
       option_values:
@@ -3291,16 +3240,6 @@ definitions:
         type: string
         description: |
           Determines how the products are sorted on category page load.
-        enum:
-          - use_store_settings
-          - featured
-          - newest
-          - best_selling
-          - alpha_asc
-          - alpha_desc
-          - avg_customer_review
-          - price_asc
-          - price_desc
       image_url:
         type: string
         description: |
@@ -3918,8 +3857,6 @@ definitions:
         type: string
         description: |
           The video type (a short name of a host site).
-        enum:
-          - youtube
   ProductVideo:
     type: object
     description: |
@@ -4125,11 +4062,6 @@ definitions:
         type: string
         description: |
           The product type. One of: `physical` - a physical stock unit, `digital` - a digital download.
-        x-required:
-          - post
-        enum:
-          - physical
-          - digital
       sku:
         type: string
         description: |
@@ -4238,10 +4170,6 @@ definitions:
         type: string
         description: |
           The type of inventory tracking for the product. Values are: `none` - inventory levels will not be tracked; `product` - inventory levels will be tracked using the `inventory_level` and `inventory_warning_level` fields; `variant` - inventory levels will be tracked based on variants, which maintain their own warning levels and inventory levels.
-        enum:
-          - none
-          - product
-          - variant
       fixed_cost_shipping_price:
         type: number
         format: double
@@ -4298,10 +4226,6 @@ definitions:
         maxLength: 65535
       availability:
         type: string
-        enum:
-          - available
-          - disabled
-          - preorder
         description: |
           Availability of the product. Availability options are: `available` - the product can be purchased on the storefront; `disabled` - the product is listed in the storefront, but cannot be purchased; `preorder` - the product is listed for pre-orders.
       availability_description:
@@ -4312,10 +4236,6 @@ definitions:
         maxLength: 255
       gift_wrapping_options_type:
         type: string
-        enum:
-          - any
-          - none
-          - list
         description: |
           Type of gift-wrapping options. Values: `any` - allow any gift-wrapping options in the store; `none` - disallow gift-wrapping on the product; `list` – provide a list of IDs in the `gift_wrapping_options_list` field.
       gift_wrapping_options_list:
@@ -4334,10 +4254,6 @@ definitions:
         type: string
         description: |
           The product condition. Will be shown on the product page if the `is_condition_shown` field's value is `true`. Possible values: `New`, `Used`, `Refurbished`.
-        enum:
-          - New
-          - Used
-          - Refurbished
       is_condition_shown:
         type: boolean
         description: |
@@ -4410,16 +4326,6 @@ definitions:
         type: string
         description: |
           Type of product, defaults to `product`.
-        enum:
-          - product
-          - album
-          - book
-          - drink
-          - food
-          - game
-          - movie
-          - song
-          - tv_show
       open_graph_title:
         type: string
         description: |
@@ -4617,12 +4523,6 @@ definitions:
         type: string
         description: |
           Determines whether the field is completely private to the app that owns the field (`app_only`), or visible to other API consumers (`read`), or completely open for reading and writing to other apps (`write`).
-        enum:
-          - app_only
-          - read
-          - write
-        x-required:
-          - post
       namespace:
         type: string
         description: |
@@ -4657,19 +4557,10 @@ definitions:
         type: string
         description: |
           The type of resource with which the metafield is associated.
-        enum:
-          - category
-          - brand
-          - product
-          - variant
-        x-required:
-          - post
       resource_id:
         type: integer
         description: |
           The unique identifier for the resource with which the metafield is associated.
-        x-required:
-          - post
         minimum: 0
         maximum: 10000000000
   Metafield:
@@ -4890,14 +4781,6 @@ definitions:
         type: string
         description: |
           The type of the configurable field, which determines what sort of information the field is intended to collect on the storefront. Supported types in include a text input, a multi-line textarea, a checkbox, a file upload, and a dropdown selection.
-        enum:
-          - text
-          - textarea
-          - checkbox
-          - file
-          - select
-        x-required:
-          - post
       file_allowed_types:
         type: array
         items:
@@ -5156,12 +5039,6 @@ definitions:
         type: string
         description: |
           The type of adjustment that is made. Values: `price` - the adjustment amount per product; `percent` - the adjustment as a percentage of the original price; `fixed` - the adjusted absolute price of the product.
-        x-required:
-          - post
-        enum:
-          - price
-          - percent
-          - fixed
       amount:
         type: number
         format: double
@@ -5220,10 +5097,6 @@ definitions:
         type: string
         description: |
           (date) The type of limit that is allowed to be entered on a date option.
-        enum:
-          - earliest
-          - range
-          - latest
       date_earliest_value:
         type: string
         format: date
@@ -5238,9 +5111,6 @@ definitions:
         type: string
         description: |
           (file) The kind of restriction on the file types that can be uploaded with a file upload option. Values: `specific` - restricts uploads to particular file types; `all` - allows all file types.
-        enum:
-          - specific
-          - all
       file_types_supported:
         type: array
         description: |
@@ -5287,11 +5157,6 @@ definitions:
         type: string
         description: |
           (numbers_only_text) The type of limit on values entered for a number option.
-        enum:
-          - ''
-          - lowest
-          - highest
-          - range
       number_lowest_value:
         type: number
         description: |
@@ -5316,10 +5181,6 @@ definitions:
         type: string
         description: |
           (product_list, product_list_with_images) How to factor the optional product's weight and package dimensions into the shipping quote. Values: `none` - don't adjust; `weight` - use shipping weight only; `package` - use weight and dimensions.
-        enum:
-          - none
-          - weight
-          - package
   Adjuster:
     type: object
     properties:
@@ -5327,10 +5188,6 @@ definitions:
         type: string
         description: |
           The type of adjuster for either the price or the weight of the variant, when the modifier value is selected on the storefront.
-        enum:
-          - relative
-          - percentage
-        x-nullable: true
       adjuster_value:
         type: number
         description: |

@@ -102,42 +102,8 @@ class ModifierPut extends ModifierBase implements ArrayAccess
         return self::$getters;
     }
 
-    const TYPE_DATE = 'date';
-    const TYPE_CHECKBOX = 'checkbox';
-    const TYPE_FILE = 'file';
-    const TYPE_TEXT = 'text';
-    const TYPE_MULTI_LINE_TEXT = 'multi_line_text';
-    const TYPE_NUMBERS_ONLY_TEXT = 'numbers_only_text';
-    const TYPE_RADIO_BUTTONS = 'radio_buttons';
-    const TYPE_RECTANGLES = 'rectangles';
-    const TYPE_DROPDOWN = 'dropdown';
-    const TYPE_PRODUCT_LIST = 'product_list';
-    const TYPE_PRODUCT_LIST_WITH_IMAGES = 'product_list_with_images';
-    const TYPE_SWATCH = 'swatch';
     
 
-    
-    /**
-     * Gets allowable values of the enum
-     * @return string[]
-     */
-    public function getTypeAllowableValues()
-    {
-        return [
-            self::TYPE_DATE,
-            self::TYPE_CHECKBOX,
-            self::TYPE_FILE,
-            self::TYPE_TEXT,
-            self::TYPE_MULTI_LINE_TEXT,
-            self::TYPE_NUMBERS_ONLY_TEXT,
-            self::TYPE_RADIO_BUTTONS,
-            self::TYPE_RECTANGLES,
-            self::TYPE_DROPDOWN,
-            self::TYPE_PRODUCT_LIST,
-            self::TYPE_PRODUCT_LIST_WITH_IMAGES,
-            self::TYPE_SWATCH,
-        ];
-    }
     
 
     /**
@@ -176,10 +142,6 @@ class ModifierPut extends ModifierBase implements ArrayAccess
     public function listInvalidProperties()
     {
         $invalid_properties = [];
-        $allowed_values = ["date", "checkbox", "file", "text", "multi_line_text", "numbers_only_text", "radio_buttons", "rectangles", "dropdown", "product_list", "product_list_with_images", "swatch"];
-        if (!in_array($this->container['type'], $allowed_values)) {
-            $invalid_properties[] = "invalid value for 'type', must be one of #{allowed_values}.";
-        }
         return $invalid_properties;
     }
 
@@ -191,10 +153,6 @@ class ModifierPut extends ModifierBase implements ArrayAccess
      */
     public function valid()
     {
-        $allowed_values = ["date", "checkbox", "file", "text", "multi_line_text", "numbers_only_text", "radio_buttons", "rectangles", "dropdown", "product_list", "product_list_with_images", "swatch"];
-        if (!in_array($this->container['type'], $allowed_values)) {
-            return false;
-        }
         return true;
     }
 
@@ -215,10 +173,6 @@ class ModifierPut extends ModifierBase implements ArrayAccess
      */
     public function setType($type)
     {
-        $allowed_values = ['date', 'checkbox', 'file', 'text', 'multi_line_text', 'numbers_only_text', 'radio_buttons', 'rectangles', 'dropdown', 'product_list', 'product_list_with_images', 'swatch'];
-        if (!is_null($type) && (!in_array($type, $allowed_values))) {
-            throw new \InvalidArgumentException("Invalid value for 'type', must be one of 'date', 'checkbox', 'file', 'text', 'multi_line_text', 'numbers_only_text', 'radio_buttons', 'rectangles', 'dropdown', 'product_list', 'product_list_with_images', 'swatch'");
-        }
         $this->container['type'] = $type;
 
         return $this;

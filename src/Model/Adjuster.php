@@ -90,22 +90,8 @@ class Adjuster implements ArrayAccess
         return self::$getters;
     }
 
-    const ADJUSTER_RELATIVE = 'relative';
-    const ADJUSTER_PERCENTAGE = 'percentage';
     
 
-    
-    /**
-     * Gets allowable values of the enum
-     * @return string[]
-     */
-    public function getAdjusterAllowableValues()
-    {
-        return [
-            self::ADJUSTER_RELATIVE,
-            self::ADJUSTER_PERCENTAGE,
-        ];
-    }
     
 
     /**
@@ -141,10 +127,6 @@ class Adjuster implements ArrayAccess
     public function listInvalidProperties()
     {
         $invalid_properties = [];
-        $allowed_values = ["relative", "percentage"];
-        if (!in_array($this->container['adjuster'], $allowed_values)) {
-            $invalid_properties[] = "invalid value for 'adjuster', must be one of #{allowed_values}.";
-        }
         return $invalid_properties;
     }
 
@@ -156,10 +138,6 @@ class Adjuster implements ArrayAccess
      */
     public function valid()
     {
-        $allowed_values = ["relative", "percentage"];
-        if (!in_array($this->container['adjuster'], $allowed_values)) {
-            return false;
-        }
         return true;
     }
 
@@ -180,10 +158,6 @@ class Adjuster implements ArrayAccess
      */
     public function setAdjuster($adjuster)
     {
-        $allowed_values = ['relative', 'percentage'];
-        if (!is_null($adjuster) && (!in_array($adjuster, $allowed_values))) {
-            throw new \InvalidArgumentException("Invalid value for 'adjuster', must be one of 'relative', 'percentage'");
-        }
         $this->container['adjuster'] = $adjuster;
 
         return $this;

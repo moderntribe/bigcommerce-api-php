@@ -166,144 +166,8 @@ class Transaction extends TransactionPost implements ArrayAccess
         return self::$getters;
     }
 
-    const EVENT_PURCHASE = 'purchase';
-    const EVENT_AUTHORIZATION = 'authorization';
-    const EVENT_CAPTURE = 'capture';
-    const EVENT_REFUND = 'refund';
-    const EVENT_VOID = 'void';
-    const EVENT_PENDING = 'pending';
-    const EVENT_SETTLED = 'settled';
-    const METHOD_CREDIT_CARD = 'credit_card';
-    const METHOD_ELECTRONIC_WALLET = 'electronic_wallet';
-    const METHOD_GIFT_CERTIFICATE = 'gift_certificate';
-    const METHOD_STORE_CREDIT = 'store_credit';
-    const METHOD_APPLE_PAY_CARD = 'apple_pay_card';
-    const METHOD_APPLE_PAY_TOKEN = 'apple_pay_token';
-    const METHOD_TOKEN = 'token';
-    const METHOD_CUSTOM = 'custom';
-    const METHOD_OFFSITE = 'offsite';
-    const METHOD_OFFLINE = 'offline';
-    const METHOD_NONCE = 'nonce';
-    const GATEWAY__2CHECKOUT = '2checkout';
-    const GATEWAY_ADYEN = 'adyen';
-    const GATEWAY_AMAZON = 'amazon';
-    const GATEWAY_AUTHORIZENET = 'authorizenet';
-    const GATEWAY_BANKDEPOSIT = 'bankdeposit';
-    const GATEWAY_BRAINTREE = 'braintree';
-    const GATEWAY_CHEQUE = 'cheque';
-    const GATEWAY_COD = 'cod';
-    const GATEWAY_CUSTOM = 'custom';
-    const GATEWAY_FIRSTDATAGGE4 = 'firstdatagge4';
-    const GATEWAY_GIFTCERTIFICATE = 'giftcertificate';
-    const GATEWAY_HPS = 'hps';
-    const GATEWAY_INSTORE = 'instore';
-    const GATEWAY_KLARNA = 'klarna';
-    const GATEWAY_MIGS = 'migs';
-    const GATEWAY_MONEYORDER = 'moneyorder';
-    const GATEWAY_NMI = 'nmi';
-    const GATEWAY_PAYPALEXPRESS = 'paypalexpress';
-    const GATEWAY_PAYPALPAYMENTSPROUS = 'paypalpaymentsprous';
-    const GATEWAY_PAYPALPAYMENTSPROUK = 'paypalpaymentsprouk';
-    const GATEWAY_PLUGNPAY = 'plugnpay';
-    const GATEWAY_QBMSV2 = 'qbmsv2';
-    const GATEWAY_SECURENET = 'securenet';
-    const GATEWAY_SQUARE = 'square';
-    const GATEWAY_STORECREDIT = 'storecredit';
-    const GATEWAY_STRIPE = 'stripe';
-    const GATEWAY_TESTGATEWAY = 'testgateway';
-    const GATEWAY_USAEPAY = 'usaepay';
-    const STATUS_OK = 'ok';
-    const STATUS_ERROR = 'error';
     
 
-    
-    /**
-     * Gets allowable values of the enum
-     * @return string[]
-     */
-    public function getEventAllowableValues()
-    {
-        return [
-            self::EVENT_PURCHASE,
-            self::EVENT_AUTHORIZATION,
-            self::EVENT_CAPTURE,
-            self::EVENT_REFUND,
-            self::EVENT_VOID,
-            self::EVENT_PENDING,
-            self::EVENT_SETTLED,
-        ];
-    }
-    
-    /**
-     * Gets allowable values of the enum
-     * @return string[]
-     */
-    public function getMethodAllowableValues()
-    {
-        return [
-            self::METHOD_CREDIT_CARD,
-            self::METHOD_ELECTRONIC_WALLET,
-            self::METHOD_GIFT_CERTIFICATE,
-            self::METHOD_STORE_CREDIT,
-            self::METHOD_APPLE_PAY_CARD,
-            self::METHOD_APPLE_PAY_TOKEN,
-            self::METHOD_TOKEN,
-            self::METHOD_CUSTOM,
-            self::METHOD_OFFSITE,
-            self::METHOD_OFFLINE,
-            self::METHOD_NONCE,
-        ];
-    }
-    
-    /**
-     * Gets allowable values of the enum
-     * @return string[]
-     */
-    public function getGatewayAllowableValues()
-    {
-        return [
-            self::GATEWAY__2CHECKOUT,
-            self::GATEWAY_ADYEN,
-            self::GATEWAY_AMAZON,
-            self::GATEWAY_AUTHORIZENET,
-            self::GATEWAY_BANKDEPOSIT,
-            self::GATEWAY_BRAINTREE,
-            self::GATEWAY_CHEQUE,
-            self::GATEWAY_COD,
-            self::GATEWAY_CUSTOM,
-            self::GATEWAY_FIRSTDATAGGE4,
-            self::GATEWAY_GIFTCERTIFICATE,
-            self::GATEWAY_HPS,
-            self::GATEWAY_INSTORE,
-            self::GATEWAY_KLARNA,
-            self::GATEWAY_MIGS,
-            self::GATEWAY_MONEYORDER,
-            self::GATEWAY_NMI,
-            self::GATEWAY_PAYPALEXPRESS,
-            self::GATEWAY_PAYPALPAYMENTSPROUS,
-            self::GATEWAY_PAYPALPAYMENTSPROUK,
-            self::GATEWAY_PLUGNPAY,
-            self::GATEWAY_QBMSV2,
-            self::GATEWAY_SECURENET,
-            self::GATEWAY_SQUARE,
-            self::GATEWAY_STORECREDIT,
-            self::GATEWAY_STRIPE,
-            self::GATEWAY_TESTGATEWAY,
-            self::GATEWAY_USAEPAY,
-        ];
-    }
-    
-    /**
-     * Gets allowable values of the enum
-     * @return string[]
-     */
-    public function getStatusAllowableValues()
-    {
-        return [
-            self::STATUS_OK,
-            self::STATUS_ERROR,
-        ];
-    }
     
 
     /**
@@ -361,16 +225,8 @@ class Transaction extends TransactionPost implements ArrayAccess
         if ($this->container['event'] === null) {
             $invalid_properties[] = "'event' can't be null";
         }
-        $allowed_values = ["purchase", "authorization", "capture", "refund", "void", "pending", "settled"];
-        if (!in_array($this->container['event'], $allowed_values)) {
-            $invalid_properties[] = "invalid value for 'event', must be one of #{allowed_values}.";
-        }
         if ($this->container['method'] === null) {
             $invalid_properties[] = "'method' can't be null";
-        }
-        $allowed_values = ["credit_card", "electronic_wallet", "gift_certificate", "store_credit", "apple_pay_card", "apple_pay_token", "token", "custom", "offsite", "offline", "nonce"];
-        if (!in_array($this->container['method'], $allowed_values)) {
-            $invalid_properties[] = "invalid value for 'method', must be one of #{allowed_values}.";
         }
         if ($this->container['amount'] === null) {
             $invalid_properties[] = "'amount' can't be null";
@@ -380,14 +236,6 @@ class Transaction extends TransactionPost implements ArrayAccess
         }
         if ($this->container['gateway'] === null) {
             $invalid_properties[] = "'gateway' can't be null";
-        }
-        $allowed_values = ["2checkout", "adyen", "amazon", "authorizenet", "bankdeposit", "braintree", "cheque", "cod", "custom", "firstdatagge4", "giftcertificate", "hps", "instore", "klarna", "migs", "moneyorder", "nmi", "paypalexpress", "paypalpaymentsprous", "paypalpaymentsprouk", "plugnpay", "qbmsv2", "securenet", "square", "storecredit", "stripe", "testgateway", "usaepay"];
-        if (!in_array($this->container['gateway'], $allowed_values)) {
-            $invalid_properties[] = "invalid value for 'gateway', must be one of #{allowed_values}.";
-        }
-        $allowed_values = ["ok", "error"];
-        if (!in_array($this->container['status'], $allowed_values)) {
-            $invalid_properties[] = "invalid value for 'status', must be one of #{allowed_values}.";
         }
         return $invalid_properties;
     }
@@ -403,15 +251,7 @@ class Transaction extends TransactionPost implements ArrayAccess
         if ($this->container['event'] === null) {
             return false;
         }
-        $allowed_values = ["purchase", "authorization", "capture", "refund", "void", "pending", "settled"];
-        if (!in_array($this->container['event'], $allowed_values)) {
-            return false;
-        }
         if ($this->container['method'] === null) {
-            return false;
-        }
-        $allowed_values = ["credit_card", "electronic_wallet", "gift_certificate", "store_credit", "apple_pay_card", "apple_pay_token", "token", "custom", "offsite", "offline", "nonce"];
-        if (!in_array($this->container['method'], $allowed_values)) {
             return false;
         }
         if ($this->container['amount'] === null) {
@@ -421,14 +261,6 @@ class Transaction extends TransactionPost implements ArrayAccess
             return false;
         }
         if ($this->container['gateway'] === null) {
-            return false;
-        }
-        $allowed_values = ["2checkout", "adyen", "amazon", "authorizenet", "bankdeposit", "braintree", "cheque", "cod", "custom", "firstdatagge4", "giftcertificate", "hps", "instore", "klarna", "migs", "moneyorder", "nmi", "paypalexpress", "paypalpaymentsprous", "paypalpaymentsprouk", "plugnpay", "qbmsv2", "securenet", "square", "storecredit", "stripe", "testgateway", "usaepay"];
-        if (!in_array($this->container['gateway'], $allowed_values)) {
-            return false;
-        }
-        $allowed_values = ["ok", "error"];
-        if (!in_array($this->container['status'], $allowed_values)) {
             return false;
         }
         return true;
@@ -451,10 +283,6 @@ class Transaction extends TransactionPost implements ArrayAccess
      */
     public function setEvent($event)
     {
-        $allowed_values = ['purchase', 'authorization', 'capture', 'refund', 'void', 'pending', 'settled'];
-        if (!is_null($event) && (!in_array($event, $allowed_values))) {
-            throw new \InvalidArgumentException("Invalid value for 'event', must be one of 'purchase', 'authorization', 'capture', 'refund', 'void', 'pending', 'settled'");
-        }
         $this->container['event'] = $event;
 
         return $this;
@@ -476,10 +304,6 @@ class Transaction extends TransactionPost implements ArrayAccess
      */
     public function setMethod($method)
     {
-        $allowed_values = ['credit_card', 'electronic_wallet', 'gift_certificate', 'store_credit', 'apple_pay_card', 'apple_pay_token', 'token', 'custom', 'offsite', 'offline', 'nonce'];
-        if (!is_null($method) && (!in_array($method, $allowed_values))) {
-            throw new \InvalidArgumentException("Invalid value for 'method', must be one of 'credit_card', 'electronic_wallet', 'gift_certificate', 'store_credit', 'apple_pay_card', 'apple_pay_token', 'token', 'custom', 'offsite', 'offline', 'nonce'");
-        }
         $this->container['method'] = $method;
 
         return $this;
@@ -543,10 +367,6 @@ class Transaction extends TransactionPost implements ArrayAccess
      */
     public function setGateway($gateway)
     {
-        $allowed_values = ['2checkout', 'adyen', 'amazon', 'authorizenet', 'bankdeposit', 'braintree', 'cheque', 'cod', 'custom', 'firstdatagge4', 'giftcertificate', 'hps', 'instore', 'klarna', 'migs', 'moneyorder', 'nmi', 'paypalexpress', 'paypalpaymentsprous', 'paypalpaymentsprouk', 'plugnpay', 'qbmsv2', 'securenet', 'square', 'storecredit', 'stripe', 'testgateway', 'usaepay'];
-        if (!is_null($gateway) && (!in_array($gateway, $allowed_values))) {
-            throw new \InvalidArgumentException("Invalid value for 'gateway', must be one of '2checkout', 'adyen', 'amazon', 'authorizenet', 'bankdeposit', 'braintree', 'cheque', 'cod', 'custom', 'firstdatagge4', 'giftcertificate', 'hps', 'instore', 'klarna', 'migs', 'moneyorder', 'nmi', 'paypalexpress', 'paypalpaymentsprous', 'paypalpaymentsprouk', 'plugnpay', 'qbmsv2', 'securenet', 'square', 'storecredit', 'stripe', 'testgateway', 'usaepay'");
-        }
         $this->container['gateway'] = $gateway;
 
         return $this;
@@ -631,10 +451,6 @@ class Transaction extends TransactionPost implements ArrayAccess
      */
     public function setStatus($status)
     {
-        $allowed_values = ['ok', 'error'];
-        if (!is_null($status) && (!in_array($status, $allowed_values))) {
-            throw new \InvalidArgumentException("Invalid value for 'status', must be one of 'ok', 'error'");
-        }
         $this->container['status'] = $status;
 
         return $this;

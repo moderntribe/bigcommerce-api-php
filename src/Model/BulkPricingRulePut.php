@@ -102,24 +102,8 @@ class BulkPricingRulePut extends BulkPricingRule implements ArrayAccess
         return self::$getters;
     }
 
-    const TYPE_PRICE = 'price';
-    const TYPE_PERCENT = 'percent';
-    const TYPE_FIXED = 'fixed';
     
 
-    
-    /**
-     * Gets allowable values of the enum
-     * @return string[]
-     */
-    public function getTypeAllowableValues()
-    {
-        return [
-            self::TYPE_PRICE,
-            self::TYPE_PERCENT,
-            self::TYPE_FIXED,
-        ];
-    }
     
 
     /**
@@ -164,10 +148,6 @@ class BulkPricingRulePut extends BulkPricingRule implements ArrayAccess
         if ($this->container['quantity_max'] < 0) {
             $invalid_properties[] = "invalid value for 'quantity_max', must be bigger than or equal to 0.";
         }
-        $allowed_values = ["price", "percent", "fixed"];
-        if (!in_array($this->container['type'], $allowed_values)) {
-            $invalid_properties[] = "invalid value for 'type', must be one of #{allowed_values}.";
-        }
         if ($this->container['amount'] < 0) {
             $invalid_properties[] = "invalid value for 'amount', must be bigger than or equal to 0.";
         }
@@ -189,10 +169,6 @@ class BulkPricingRulePut extends BulkPricingRule implements ArrayAccess
             return false;
         }
         if ($this->container['quantity_max'] < 0) {
-            return false;
-        }
-        $allowed_values = ["price", "percent", "fixed"];
-        if (!in_array($this->container['type'], $allowed_values)) {
             return false;
         }
         if ($this->container['amount'] < 0) {
@@ -271,10 +247,6 @@ class BulkPricingRulePut extends BulkPricingRule implements ArrayAccess
      */
     public function setType($type)
     {
-        $allowed_values = ['price', 'percent', 'fixed'];
-        if (!is_null($type) && (!in_array($type, $allowed_values))) {
-            throw new \InvalidArgumentException("Invalid value for 'type', must be one of 'price', 'percent', 'fixed'");
-        }
         $this->container['type'] = $type;
 
         return $this;

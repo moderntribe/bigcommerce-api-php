@@ -114,20 +114,8 @@ class ProductVideo extends ProductVideoBase implements ArrayAccess
         return self::$getters;
     }
 
-    const TYPE_YOUTUBE = 'youtube';
     
 
-    
-    /**
-     * Gets allowable values of the enum
-     * @return string[]
-     */
-    public function getTypeAllowableValues()
-    {
-        return [
-            self::TYPE_YOUTUBE,
-        ];
-    }
     
 
     /**
@@ -181,10 +169,6 @@ class ProductVideo extends ProductVideoBase implements ArrayAccess
         if ($this->container['sort_order'] < -2147483648) {
             $invalid_properties[] = "invalid value for 'sort_order', must be bigger than or equal to -2147483648.";
         }
-        $allowed_values = ["youtube"];
-        if (!in_array($this->container['type'], $allowed_values)) {
-            $invalid_properties[] = "invalid value for 'type', must be one of #{allowed_values}.";
-        }
         return $invalid_properties;
     }
 
@@ -206,10 +190,6 @@ class ProductVideo extends ProductVideoBase implements ArrayAccess
             return false;
         }
         if ($this->container['sort_order'] < -2147483648) {
-            return false;
-        }
-        $allowed_values = ["youtube"];
-        if (!in_array($this->container['type'], $allowed_values)) {
             return false;
         }
         return true;
@@ -308,10 +288,6 @@ class ProductVideo extends ProductVideoBase implements ArrayAccess
      */
     public function setType($type)
     {
-        $allowed_values = ['youtube'];
-        if (!is_null($type) && (!in_array($type, $allowed_values))) {
-            throw new \InvalidArgumentException("Invalid value for 'type', must be one of 'youtube'");
-        }
         $this->container['type'] = $type;
 
         return $this;

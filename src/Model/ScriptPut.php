@@ -118,70 +118,8 @@ class ScriptPut implements ArrayAccess
         return self::$getters;
     }
 
-    const LOAD_METHOD_DEFAULT = 'default';
-    const LOAD_METHOD_ASYNC = 'async';
-    const LOAD_METHOD_DEFER = 'defer';
-    const LOCATION_HEAD = 'head';
-    const LOCATION_FOOTER = 'footer';
-    const VISIBILITY_STOREFRONT = 'storefront';
-    const VISIBILITY_ALL_PAGES = 'all_pages';
-    const VISIBILITY_CHECKOUT = 'checkout';
-    const VISIBILITY_ORDER_CONFIRMATION = 'order_confirmation';
-    const KIND_SRC = 'src';
-    const KIND_HTML = 'html';
     
 
-    
-    /**
-     * Gets allowable values of the enum
-     * @return string[]
-     */
-    public function getLoadMethodAllowableValues()
-    {
-        return [
-            self::LOAD_METHOD_DEFAULT,
-            self::LOAD_METHOD_ASYNC,
-            self::LOAD_METHOD_DEFER,
-        ];
-    }
-    
-    /**
-     * Gets allowable values of the enum
-     * @return string[]
-     */
-    public function getLocationAllowableValues()
-    {
-        return [
-            self::LOCATION_HEAD,
-            self::LOCATION_FOOTER,
-        ];
-    }
-    
-    /**
-     * Gets allowable values of the enum
-     * @return string[]
-     */
-    public function getVisibilityAllowableValues()
-    {
-        return [
-            self::VISIBILITY_STOREFRONT,
-            self::VISIBILITY_ALL_PAGES,
-            self::VISIBILITY_CHECKOUT,
-            self::VISIBILITY_ORDER_CONFIRMATION,
-        ];
-    }
-    
-    /**
-     * Gets allowable values of the enum
-     * @return string[]
-     */
-    public function getKindAllowableValues()
-    {
-        return [
-            self::KIND_SRC,
-            self::KIND_HTML,
-        ];
-    }
     
 
     /**
@@ -239,22 +177,6 @@ class ScriptPut implements ArrayAccess
         if (strlen($this->container['src']) > 255) {
             $invalid_properties[] = "invalid value for 'src', the character length must be smaller than or equal to 255.";
         }
-        $allowed_values = ["default", "async", "defer"];
-        if (!in_array($this->container['load_method'], $allowed_values)) {
-            $invalid_properties[] = "invalid value for 'load_method', must be one of #{allowed_values}.";
-        }
-        $allowed_values = ["head", "footer"];
-        if (!in_array($this->container['location'], $allowed_values)) {
-            $invalid_properties[] = "invalid value for 'location', must be one of #{allowed_values}.";
-        }
-        $allowed_values = ["storefront", "all_pages", "checkout", "order_confirmation"];
-        if (!in_array($this->container['visibility'], $allowed_values)) {
-            $invalid_properties[] = "invalid value for 'visibility', must be one of #{allowed_values}.";
-        }
-        $allowed_values = ["src", "html"];
-        if (!in_array($this->container['kind'], $allowed_values)) {
-            $invalid_properties[] = "invalid value for 'kind', must be one of #{allowed_values}.";
-        }
         return $invalid_properties;
     }
 
@@ -279,22 +201,6 @@ class ScriptPut implements ArrayAccess
             return false;
         }
         if (strlen($this->container['src']) > 255) {
-            return false;
-        }
-        $allowed_values = ["default", "async", "defer"];
-        if (!in_array($this->container['load_method'], $allowed_values)) {
-            return false;
-        }
-        $allowed_values = ["head", "footer"];
-        if (!in_array($this->container['location'], $allowed_values)) {
-            return false;
-        }
-        $allowed_values = ["storefront", "all_pages", "checkout", "order_confirmation"];
-        if (!in_array($this->container['visibility'], $allowed_values)) {
-            return false;
-        }
-        $allowed_values = ["src", "html"];
-        if (!in_array($this->container['kind'], $allowed_values)) {
             return false;
         }
         return true;
@@ -437,10 +343,6 @@ class ScriptPut implements ArrayAccess
      */
     public function setLoadMethod($load_method)
     {
-        $allowed_values = ['default', 'async', 'defer'];
-        if (!is_null($load_method) && (!in_array($load_method, $allowed_values))) {
-            throw new \InvalidArgumentException("Invalid value for 'load_method', must be one of 'default', 'async', 'defer'");
-        }
         $this->container['load_method'] = $load_method;
 
         return $this;
@@ -462,10 +364,6 @@ class ScriptPut implements ArrayAccess
      */
     public function setLocation($location)
     {
-        $allowed_values = ['head', 'footer'];
-        if (!is_null($location) && (!in_array($location, $allowed_values))) {
-            throw new \InvalidArgumentException("Invalid value for 'location', must be one of 'head', 'footer'");
-        }
         $this->container['location'] = $location;
 
         return $this;
@@ -487,10 +385,6 @@ class ScriptPut implements ArrayAccess
      */
     public function setVisibility($visibility)
     {
-        $allowed_values = ['storefront', 'all_pages', 'checkout', 'order_confirmation'];
-        if (!is_null($visibility) && (!in_array($visibility, $allowed_values))) {
-            throw new \InvalidArgumentException("Invalid value for 'visibility', must be one of 'storefront', 'all_pages', 'checkout', 'order_confirmation'");
-        }
         $this->container['visibility'] = $visibility;
 
         return $this;
@@ -512,10 +406,6 @@ class ScriptPut implements ArrayAccess
      */
     public function setKind($kind)
     {
-        $allowed_values = ['src', 'html'];
-        if (!is_null($kind) && (!in_array($kind, $allowed_values))) {
-            throw new \InvalidArgumentException("Invalid value for 'kind', must be one of 'src', 'html'");
-        }
         $this->container['kind'] = $kind;
 
         return $this;

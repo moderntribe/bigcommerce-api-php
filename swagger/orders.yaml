@@ -1396,11 +1396,6 @@ definitions:
           will be the order product id. Otherwise the field will return as null.
       line_item_type:
         type: string
-        enum:
-          - item
-          - shipping
-          - handling
-          - gift-wrapping
         description: Type of tax on item
   OrderShipment:
     title: Order Shipment
@@ -1442,51 +1437,9 @@ definitions:
           object. If it is omitted from the request, the property’s value will default
           to custom, and no tracking link will be generated in the email. To avoid
           this behavior, you can pass the property as an empty string.)'
-        enum:
-          - auspost
-          - canadapost
-          - endicia
-          - usps
-          - fedex
-          - royalmail
-          - ups
-          - upsready
-          - upsonline
-          - shipperhq
-          - " "
       tracking_carrier:
         title: Tracking Carrier
-        example: auspost
-        x-enum-elements:
-          - name: auspost
-            description: ''
-          - name: canadapost
-            description: ''
-          - name: endicia
-            description: ''
-          - name: usps
-            description: ''
-          - name: fedex
-            description: ''
-          - name: royalmail
-            description: ''
-          - name: ups
-            description: ''
-          - name: upsready
-            description: ''
-          - name: shipperhq
-            description: ''
         type: string
-        enum:
-          - auspost
-          - canadapost
-          - endicia
-          - usps
-          - fedex
-          - royalmail
-          - ups
-          - upsready
-          - shipperhq
         description: Optional, but if you include it, its value must refer/map to
           the same carrier service as the `shipping_provider` value.
       comments:

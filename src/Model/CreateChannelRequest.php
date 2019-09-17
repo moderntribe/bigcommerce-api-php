@@ -98,44 +98,8 @@ class CreateChannelRequest implements ArrayAccess
         return self::$getters;
     }
 
-    const TYPE_POS = 'pos';
-    const TYPE_MARKETPLACE = 'marketplace';
-    const TYPE_STOREFRONT = 'storefront';
-    const TYPE_MARKETING = 'marketing';
-    const TYPE_CUSTOM = 'custom';
-    const PLATFORM_WORDPRESS = 'wordpress';
-    const PLATFORM_DRUPAL = 'drupal';
-    const PLATFORM_BIGCOMMERCE = 'bigcommerce';
     
 
-    
-    /**
-     * Gets allowable values of the enum
-     * @return string[]
-     */
-    public function getTypeAllowableValues()
-    {
-        return [
-            self::TYPE_POS,
-            self::TYPE_MARKETPLACE,
-            self::TYPE_STOREFRONT,
-            self::TYPE_MARKETING,
-            self::TYPE_CUSTOM,
-        ];
-    }
-    
-    /**
-     * Gets allowable values of the enum
-     * @return string[]
-     */
-    public function getPlatformAllowableValues()
-    {
-        return [
-            self::PLATFORM_WORDPRESS,
-            self::PLATFORM_DRUPAL,
-            self::PLATFORM_BIGCOMMERCE,
-        ];
-    }
     
 
     /**
@@ -176,16 +140,8 @@ class CreateChannelRequest implements ArrayAccess
         if ($this->container['type'] === null) {
             $invalid_properties[] = "'type' can't be null";
         }
-        $allowed_values = ["pos", "marketplace", "storefront", "marketing", "custom"];
-        if (!in_array($this->container['type'], $allowed_values)) {
-            $invalid_properties[] = "invalid value for 'type', must be one of #{allowed_values}.";
-        }
         if ($this->container['platform'] === null) {
             $invalid_properties[] = "'platform' can't be null";
-        }
-        $allowed_values = ["wordpress", "drupal", "bigcommerce"];
-        if (!in_array($this->container['platform'], $allowed_values)) {
-            $invalid_properties[] = "invalid value for 'platform', must be one of #{allowed_values}.";
         }
         if ($this->container['name'] === null) {
             $invalid_properties[] = "'name' can't be null";
@@ -204,15 +160,7 @@ class CreateChannelRequest implements ArrayAccess
         if ($this->container['type'] === null) {
             return false;
         }
-        $allowed_values = ["pos", "marketplace", "storefront", "marketing", "custom"];
-        if (!in_array($this->container['type'], $allowed_values)) {
-            return false;
-        }
         if ($this->container['platform'] === null) {
-            return false;
-        }
-        $allowed_values = ["wordpress", "drupal", "bigcommerce"];
-        if (!in_array($this->container['platform'], $allowed_values)) {
             return false;
         }
         if ($this->container['name'] === null) {
@@ -238,10 +186,6 @@ class CreateChannelRequest implements ArrayAccess
      */
     public function setType($type)
     {
-        $allowed_values = ['pos', 'marketplace', 'storefront', 'marketing', 'custom'];
-        if (!is_null($type) && (!in_array($type, $allowed_values))) {
-            throw new \InvalidArgumentException("Invalid value for 'type', must be one of 'pos', 'marketplace', 'storefront', 'marketing', 'custom'");
-        }
         $this->container['type'] = $type;
 
         return $this;
@@ -263,10 +207,6 @@ class CreateChannelRequest implements ArrayAccess
      */
     public function setPlatform($platform)
     {
-        $allowed_values = ['wordpress', 'drupal', 'bigcommerce'];
-        if (!is_null($platform) && (!in_array($platform, $allowed_values))) {
-            throw new \InvalidArgumentException("Invalid value for 'platform', must be one of 'wordpress', 'drupal', 'bigcommerce'");
-        }
         $this->container['platform'] = $platform;
 
         return $this;

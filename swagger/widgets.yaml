@@ -596,9 +596,6 @@ definitions:
         type: string
         description: Sets the placement as either inactive or active.
         default: inactive
-        enum:
-          - inactive
-          - active
     required:
       - widget_uuid
       - template_file
@@ -615,9 +612,6 @@ definitions:
       status:
         type: string
         description: Determines whether this placement is active or inactive.
-        enum:
-          - inactive
-          - active
       template_file:
         type: string
         description: The page template name.

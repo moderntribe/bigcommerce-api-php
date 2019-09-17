@@ -102,26 +102,8 @@ class GiftCertificate implements ArrayAccess
         return self::$getters;
     }
 
-    const STATUS_ACTIVE = 'active';
-    const STATUS_PENDING = 'pending';
-    const STATUS_DISABLED = 'disabled';
-    const STATUS_EXPIRED = 'expired';
     
 
-    
-    /**
-     * Gets allowable values of the enum
-     * @return string[]
-     */
-    public function getStatusAllowableValues()
-    {
-        return [
-            self::STATUS_ACTIVE,
-            self::STATUS_PENDING,
-            self::STATUS_DISABLED,
-            self::STATUS_EXPIRED,
-        ];
-    }
     
 
     /**
@@ -160,10 +142,6 @@ class GiftCertificate implements ArrayAccess
     public function listInvalidProperties()
     {
         $invalid_properties = [];
-        $allowed_values = ["active", "pending", "disabled", "expired"];
-        if (!in_array($this->container['status'], $allowed_values)) {
-            $invalid_properties[] = "invalid value for 'status', must be one of #{allowed_values}.";
-        }
         return $invalid_properties;
     }
 
@@ -175,10 +153,6 @@ class GiftCertificate implements ArrayAccess
      */
     public function valid()
     {
-        $allowed_values = ["active", "pending", "disabled", "expired"];
-        if (!in_array($this->container['status'], $allowed_values)) {
-            return false;
-        }
         return true;
     }
 
@@ -283,10 +257,6 @@ class GiftCertificate implements ArrayAccess
      */
     public function setStatus($status)
     {
-        $allowed_values = ['active', 'pending', 'disabled', 'expired'];
-        if (!is_null($status) && (!in_array($status, $allowed_values))) {
-            throw new \InvalidArgumentException("Invalid value for 'status', must be one of 'active', 'pending', 'disabled', 'expired'");
-        }
         $this->container['status'] = $status;
 
         return $this;

@@ -273,10 +273,8 @@ definitions:
     properties:
       type:
         type: string
-        enum: [pos, marketplace, storefront, marketing, custom]
       platform:
         type: string
-        enum: [wordpress, drupal, bigcommerce]
       name:
         type: string
       external_id:
@@ -291,10 +289,8 @@ definitions:
     properties:
       type:
         type: string
-        enum: [pos, marketplace, storefront, marketing, custom]
       platform:
         type: string
-        enum: [wordpress, drupal, bigcommerce]
       name:
         type: string
       external_id:
@@ -383,18 +379,7 @@ definitions:
         type: integer
         format: int32
       state:
-        enum:
-          - active
-          - disabled
-          - error
-          - pending
-          - pending_disable
-          - pending_delete
-          - queued
-          - rejected
-          - submitted
-          - deleted
-          - unknown
+        type: string
       name:
         type: string
       description:
@@ -427,18 +412,7 @@ definitions:
       external_id:
         type: string
       state:
-        enum:
-          - active
-          - disabled
-          - error
-          - pending
-          - pending_disable
-          - pending_delete
-          - queued
-          - rejected
-          - submitted
-          - deleted
-          - unknown
+        type: string
       date_created:
         type: string
       date_modified:

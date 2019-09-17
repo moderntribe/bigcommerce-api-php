@@ -310,114 +310,8 @@ class ProductPost extends ProductBase implements ArrayAccess
         return self::$getters;
     }
 
-    const TYPE_PHYSICAL = 'physical';
-    const TYPE_DIGITAL = 'digital';
-    const INVENTORY_TRACKING_NONE = 'none';
-    const INVENTORY_TRACKING_PRODUCT = 'product';
-    const INVENTORY_TRACKING_VARIANT = 'variant';
-    const AVAILABILITY_AVAILABLE = 'available';
-    const AVAILABILITY_DISABLED = 'disabled';
-    const AVAILABILITY_PREORDER = 'preorder';
-    const GIFT_WRAPPING_OPTIONS_TYPE_ANY = 'any';
-    const GIFT_WRAPPING_OPTIONS_TYPE_NONE = 'none';
-    const GIFT_WRAPPING_OPTIONS_TYPE_LIST = 'list';
-    const CONDITION_NEW = 'New';
-    const CONDITION_USED = 'Used';
-    const CONDITION_REFURBISHED = 'Refurbished';
-    const OPEN_GRAPH_TYPE_PRODUCT = 'product';
-    const OPEN_GRAPH_TYPE_ALBUM = 'album';
-    const OPEN_GRAPH_TYPE_BOOK = 'book';
-    const OPEN_GRAPH_TYPE_DRINK = 'drink';
-    const OPEN_GRAPH_TYPE_FOOD = 'food';
-    const OPEN_GRAPH_TYPE_GAME = 'game';
-    const OPEN_GRAPH_TYPE_MOVIE = 'movie';
-    const OPEN_GRAPH_TYPE_SONG = 'song';
-    const OPEN_GRAPH_TYPE_TV_SHOW = 'tv_show';
     
 
-    
-    /**
-     * Gets allowable values of the enum
-     * @return string[]
-     */
-    public function getTypeAllowableValues()
-    {
-        return [
-            self::TYPE_PHYSICAL,
-            self::TYPE_DIGITAL,
-        ];
-    }
-    
-    /**
-     * Gets allowable values of the enum
-     * @return string[]
-     */
-    public function getInventoryTrackingAllowableValues()
-    {
-        return [
-            self::INVENTORY_TRACKING_NONE,
-            self::INVENTORY_TRACKING_PRODUCT,
-            self::INVENTORY_TRACKING_VARIANT,
-        ];
-    }
-    
-    /**
-     * Gets allowable values of the enum
-     * @return string[]
-     */
-    public function getAvailabilityAllowableValues()
-    {
-        return [
-            self::AVAILABILITY_AVAILABLE,
-            self::AVAILABILITY_DISABLED,
-            self::AVAILABILITY_PREORDER,
-        ];
-    }
-    
-    /**
-     * Gets allowable values of the enum
-     * @return string[]
-     */
-    public function getGiftWrappingOptionsTypeAllowableValues()
-    {
-        return [
-            self::GIFT_WRAPPING_OPTIONS_TYPE_ANY,
-            self::GIFT_WRAPPING_OPTIONS_TYPE_NONE,
-            self::GIFT_WRAPPING_OPTIONS_TYPE_LIST,
-        ];
-    }
-    
-    /**
-     * Gets allowable values of the enum
-     * @return string[]
-     */
-    public function getConditionAllowableValues()
-    {
-        return [
-            self::CONDITION_NEW,
-            self::CONDITION_USED,
-            self::CONDITION_REFURBISHED,
-        ];
-    }
-    
-    /**
-     * Gets allowable values of the enum
-     * @return string[]
-     */
-    public function getOpenGraphTypeAllowableValues()
-    {
-        return [
-            self::OPEN_GRAPH_TYPE_PRODUCT,
-            self::OPEN_GRAPH_TYPE_ALBUM,
-            self::OPEN_GRAPH_TYPE_BOOK,
-            self::OPEN_GRAPH_TYPE_DRINK,
-            self::OPEN_GRAPH_TYPE_FOOD,
-            self::OPEN_GRAPH_TYPE_GAME,
-            self::OPEN_GRAPH_TYPE_MOVIE,
-            self::OPEN_GRAPH_TYPE_SONG,
-            self::OPEN_GRAPH_TYPE_TV_SHOW,
-        ];
-    }
     
 
     /**
@@ -514,10 +408,6 @@ class ProductPost extends ProductBase implements ArrayAccess
         if (strlen($this->container['name']) < 1) {
             $invalid_properties[] = "invalid value for 'name', the character length must be bigger than or equal to 1.";
         }
-        $allowed_values = ["physical", "digital"];
-        if (!in_array($this->container['type'], $allowed_values)) {
-            $invalid_properties[] = "invalid value for 'type', must be one of #{allowed_values}.";
-        }
         if (strlen($this->container['sku']) > 255) {
             $invalid_properties[] = "invalid value for 'sku', the character length must be smaller than or equal to 255.";
         }
@@ -590,10 +480,6 @@ class ProductPost extends ProductBase implements ArrayAccess
         if ($this->container['inventory_warning_level'] < 0) {
             $invalid_properties[] = "invalid value for 'inventory_warning_level', must be bigger than or equal to 0.";
         }
-        $allowed_values = ["none", "product", "variant"];
-        if (!in_array($this->container['inventory_tracking'], $allowed_values)) {
-            $invalid_properties[] = "invalid value for 'inventory_tracking', must be one of #{allowed_values}.";
-        }
         if ($this->container['fixed_cost_shipping_price'] < 0) {
             $invalid_properties[] = "invalid value for 'fixed_cost_shipping_price', must be bigger than or equal to 0.";
         }
@@ -627,29 +513,17 @@ class ProductPost extends ProductBase implements ArrayAccess
         if (strlen($this->container['search_keywords']) < 0) {
             $invalid_properties[] = "invalid value for 'search_keywords', the character length must be bigger than or equal to 0.";
         }
-        $allowed_values = ["available", "disabled", "preorder"];
-        if (!in_array($this->container['availability'], $allowed_values)) {
-            $invalid_properties[] = "invalid value for 'availability', must be one of #{allowed_values}.";
-        }
         if (strlen($this->container['availability_description']) > 255) {
             $invalid_properties[] = "invalid value for 'availability_description', the character length must be smaller than or equal to 255.";
         }
         if (strlen($this->container['availability_description']) < 0) {
             $invalid_properties[] = "invalid value for 'availability_description', the character length must be bigger than or equal to 0.";
         }
-        $allowed_values = ["any", "none", "list"];
-        if (!in_array($this->container['gift_wrapping_options_type'], $allowed_values)) {
-            $invalid_properties[] = "invalid value for 'gift_wrapping_options_type', must be one of #{allowed_values}.";
-        }
         if ($this->container['sort_order'] > 2147483647) {
             $invalid_properties[] = "invalid value for 'sort_order', must be smaller than or equal to 2147483647.";
         }
         if ($this->container['sort_order'] < -2147483648) {
             $invalid_properties[] = "invalid value for 'sort_order', must be bigger than or equal to -2147483648.";
-        }
-        $allowed_values = ["New", "Used", "Refurbished"];
-        if (!in_array($this->container['condition'], $allowed_values)) {
-            $invalid_properties[] = "invalid value for 'condition', must be one of #{allowed_values}.";
         }
         if ($this->container['order_quantity_minimum'] > 1000000000) {
             $invalid_properties[] = "invalid value for 'order_quantity_minimum', must be smaller than or equal to 1000000000.";
@@ -693,10 +567,6 @@ class ProductPost extends ProductBase implements ArrayAccess
         if (strlen($this->container['price_hidden_label']) < 0) {
             $invalid_properties[] = "invalid value for 'price_hidden_label', the character length must be bigger than or equal to 0.";
         }
-        $allowed_values = ["product", "album", "book", "drink", "food", "game", "movie", "song", "tv_show"];
-        if (!in_array($this->container['open_graph_type'], $allowed_values)) {
-            $invalid_properties[] = "invalid value for 'open_graph_type', must be one of #{allowed_values}.";
-        }
         return $invalid_properties;
     }
 
@@ -712,10 +582,6 @@ class ProductPost extends ProductBase implements ArrayAccess
             return false;
         }
         if (strlen($this->container['name']) < 1) {
-            return false;
-        }
-        $allowed_values = ["physical", "digital"];
-        if (!in_array($this->container['type'], $allowed_values)) {
             return false;
         }
         if (strlen($this->container['sku']) > 255) {
@@ -790,10 +656,6 @@ class ProductPost extends ProductBase implements ArrayAccess
         if ($this->container['inventory_warning_level'] < 0) {
             return false;
         }
-        $allowed_values = ["none", "product", "variant"];
-        if (!in_array($this->container['inventory_tracking'], $allowed_values)) {
-            return false;
-        }
         if ($this->container['fixed_cost_shipping_price'] < 0) {
             return false;
         }
@@ -827,28 +689,16 @@ class ProductPost extends ProductBase implements ArrayAccess
         if (strlen($this->container['search_keywords']) < 0) {
             return false;
         }
-        $allowed_values = ["available", "disabled", "preorder"];
-        if (!in_array($this->container['availability'], $allowed_values)) {
-            return false;
-        }
         if (strlen($this->container['availability_description']) > 255) {
             return false;
         }
         if (strlen($this->container['availability_description']) < 0) {
             return false;
         }
-        $allowed_values = ["any", "none", "list"];
-        if (!in_array($this->container['gift_wrapping_options_type'], $allowed_values)) {
-            return false;
-        }
         if ($this->container['sort_order'] > 2147483647) {
             return false;
         }
         if ($this->container['sort_order'] < -2147483648) {
-            return false;
-        }
-        $allowed_values = ["New", "Used", "Refurbished"];
-        if (!in_array($this->container['condition'], $allowed_values)) {
             return false;
         }
         if ($this->container['order_quantity_minimum'] > 1000000000) {
@@ -891,10 +741,6 @@ class ProductPost extends ProductBase implements ArrayAccess
             return false;
         }
         if (strlen($this->container['price_hidden_label']) < 0) {
-            return false;
-        }
-        $allowed_values = ["product", "album", "book", "drink", "food", "game", "movie", "song", "tv_show"];
-        if (!in_array($this->container['open_graph_type'], $allowed_values)) {
             return false;
         }
         return true;
@@ -944,10 +790,6 @@ class ProductPost extends ProductBase implements ArrayAccess
      */
     public function setType($type)
     {
-        $allowed_values = ['physical', 'digital'];
-        if (!is_null($type) && (!in_array($type, $allowed_values))) {
-            throw new \InvalidArgumentException("Invalid value for 'type', must be one of 'physical', 'digital'");
-        }
         $this->container['type'] = $type;
 
         return $this;
@@ -1389,10 +1231,6 @@ class ProductPost extends ProductBase implements ArrayAccess
      */
     public function setInventoryTracking($inventory_tracking)
     {
-        $allowed_values = ['none', 'product', 'variant'];
-        if (!is_null($inventory_tracking) && (!in_array($inventory_tracking, $allowed_values))) {
-            throw new \InvalidArgumentException("Invalid value for 'inventory_tracking', must be one of 'none', 'product', 'variant'");
-        }
         $this->container['inventory_tracking'] = $inventory_tracking;
 
         return $this;
@@ -1658,10 +1496,6 @@ class ProductPost extends ProductBase implements ArrayAccess
      */
     public function setAvailability($availability)
     {
-        $allowed_values = ['available', 'disabled', 'preorder'];
-        if (!is_null($availability) && (!in_array($availability, $allowed_values))) {
-            throw new \InvalidArgumentException("Invalid value for 'availability', must be one of 'available', 'disabled', 'preorder'");
-        }
         $this->container['availability'] = $availability;
 
         return $this;
@@ -1710,10 +1544,6 @@ class ProductPost extends ProductBase implements ArrayAccess
      */
     public function setGiftWrappingOptionsType($gift_wrapping_options_type)
     {
-        $allowed_values = ['any', 'none', 'list'];
-        if (!is_null($gift_wrapping_options_type) && (!in_array($gift_wrapping_options_type, $allowed_values))) {
-            throw new \InvalidArgumentException("Invalid value for 'gift_wrapping_options_type', must be one of 'any', 'none', 'list'");
-        }
         $this->container['gift_wrapping_options_type'] = $gift_wrapping_options_type;
 
         return $this;
@@ -1784,10 +1614,6 @@ class ProductPost extends ProductBase implements ArrayAccess
      */
     public function setCondition($condition)
     {
-        $allowed_values = ['New', 'Used', 'Refurbished'];
-        if (!is_null($condition) && (!in_array($condition, $allowed_values))) {
-            throw new \InvalidArgumentException("Invalid value for 'condition', must be one of 'New', 'Used', 'Refurbished'");
-        }
         $this->container['condition'] = $condition;
 
         return $this;
@@ -2127,10 +1953,6 @@ class ProductPost extends ProductBase implements ArrayAccess
      */
     public function setOpenGraphType($open_graph_type)
     {
-        $allowed_values = ['product', 'album', 'book', 'drink', 'food', 'game', 'movie', 'song', 'tv_show'];
-        if (!is_null($open_graph_type) && (!in_array($open_graph_type, $allowed_values))) {
-            throw new \InvalidArgumentException("Invalid value for 'open_graph_type', must be one of 'product', 'album', 'book', 'drink', 'food', 'game', 'movie', 'song', 'tv_show'");
-        }
         $this->container['open_graph_type'] = $open_graph_type;
 
         return $this;

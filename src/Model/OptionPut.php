@@ -106,30 +106,8 @@ class OptionPut extends OptionBase implements ArrayAccess
         return self::$getters;
     }
 
-    const TYPE_RADIO_BUTTONS = 'radio_buttons';
-    const TYPE_RECTANGLES = 'rectangles';
-    const TYPE_DROPDOWN = 'dropdown';
-    const TYPE_PRODUCT_LIST = 'product_list';
-    const TYPE_PRODUCT_LIST_WITH_IMAGES = 'product_list_with_images';
-    const TYPE_SWATCH = 'swatch';
     
 
-    
-    /**
-     * Gets allowable values of the enum
-     * @return string[]
-     */
-    public function getTypeAllowableValues()
-    {
-        return [
-            self::TYPE_RADIO_BUTTONS,
-            self::TYPE_RECTANGLES,
-            self::TYPE_DROPDOWN,
-            self::TYPE_PRODUCT_LIST,
-            self::TYPE_PRODUCT_LIST_WITH_IMAGES,
-            self::TYPE_SWATCH,
-        ];
-    }
     
 
     /**
@@ -175,10 +153,6 @@ class OptionPut extends OptionBase implements ArrayAccess
         if (strlen($this->container['display_name']) < 1) {
             $invalid_properties[] = "invalid value for 'display_name', the character length must be bigger than or equal to 1.";
         }
-        $allowed_values = ["radio_buttons", "rectangles", "dropdown", "product_list", "product_list_with_images", "swatch"];
-        if (!in_array($this->container['type'], $allowed_values)) {
-            $invalid_properties[] = "invalid value for 'type', must be one of #{allowed_values}.";
-        }
         return $invalid_properties;
     }
 
@@ -194,10 +168,6 @@ class OptionPut extends OptionBase implements ArrayAccess
             return false;
         }
         if (strlen($this->container['display_name']) < 1) {
-            return false;
-        }
-        $allowed_values = ["radio_buttons", "rectangles", "dropdown", "product_list", "product_list_with_images", "swatch"];
-        if (!in_array($this->container['type'], $allowed_values)) {
             return false;
         }
         return true;
@@ -289,10 +259,6 @@ class OptionPut extends OptionBase implements ArrayAccess
      */
     public function setType($type)
     {
-        $allowed_values = ['radio_buttons', 'rectangles', 'dropdown', 'product_list', 'product_list_with_images', 'swatch'];
-        if (!is_null($type) && (!in_array($type, $allowed_values))) {
-            throw new \InvalidArgumentException("Invalid value for 'type', must be one of 'radio_buttons', 'rectangles', 'dropdown', 'product_list', 'product_list_with_images', 'swatch'");
-        }
         $this->container['type'] = $type;
 
         return $this;

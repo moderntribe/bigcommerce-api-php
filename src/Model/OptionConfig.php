@@ -178,72 +178,8 @@ class OptionConfig implements ArrayAccess
         return self::$getters;
     }
 
-    const DATE_LIMIT_MODE_EARLIEST = 'earliest';
-    const DATE_LIMIT_MODE_RANGE = 'range';
-    const DATE_LIMIT_MODE_LATEST = 'latest';
-    const FILE_TYPES_MODE_SPECIFIC = 'specific';
-    const FILE_TYPES_MODE_ALL = 'all';
-    const NUMBER_LIMIT_MODE_ = '';
-    const NUMBER_LIMIT_MODE_LOWEST = 'lowest';
-    const NUMBER_LIMIT_MODE_HIGHEST = 'highest';
-    const NUMBER_LIMIT_MODE_RANGE = 'range';
-    const PRODUCT_LIST_SHIPPING_CALC_NONE = 'none';
-    const PRODUCT_LIST_SHIPPING_CALC_WEIGHT = 'weight';
-    const PRODUCT_LIST_SHIPPING_CALC_PACKAGE = 'package';
     
 
-    
-    /**
-     * Gets allowable values of the enum
-     * @return string[]
-     */
-    public function getDateLimitModeAllowableValues()
-    {
-        return [
-            self::DATE_LIMIT_MODE_EARLIEST,
-            self::DATE_LIMIT_MODE_RANGE,
-            self::DATE_LIMIT_MODE_LATEST,
-        ];
-    }
-    
-    /**
-     * Gets allowable values of the enum
-     * @return string[]
-     */
-    public function getFileTypesModeAllowableValues()
-    {
-        return [
-            self::FILE_TYPES_MODE_SPECIFIC,
-            self::FILE_TYPES_MODE_ALL,
-        ];
-    }
-    
-    /**
-     * Gets allowable values of the enum
-     * @return string[]
-     */
-    public function getNumberLimitModeAllowableValues()
-    {
-        return [
-            self::NUMBER_LIMIT_MODE_,
-            self::NUMBER_LIMIT_MODE_LOWEST,
-            self::NUMBER_LIMIT_MODE_HIGHEST,
-            self::NUMBER_LIMIT_MODE_RANGE,
-        ];
-    }
-    
-    /**
-     * Gets allowable values of the enum
-     * @return string[]
-     */
-    public function getProductListShippingCalcAllowableValues()
-    {
-        return [
-            self::PRODUCT_LIST_SHIPPING_CALC_NONE,
-            self::PRODUCT_LIST_SHIPPING_CALC_WEIGHT,
-            self::PRODUCT_LIST_SHIPPING_CALC_PACKAGE,
-        ];
-    }
     
 
     /**
@@ -301,22 +237,6 @@ class OptionConfig implements ArrayAccess
     public function listInvalidProperties()
     {
         $invalid_properties = [];
-        $allowed_values = ["earliest", "range", "latest"];
-        if (!in_array($this->container['date_limit_mode'], $allowed_values)) {
-            $invalid_properties[] = "invalid value for 'date_limit_mode', must be one of #{allowed_values}.";
-        }
-        $allowed_values = ["specific", "all"];
-        if (!in_array($this->container['file_types_mode'], $allowed_values)) {
-            $invalid_properties[] = "invalid value for 'file_types_mode', must be one of #{allowed_values}.";
-        }
-        $allowed_values = ["", "lowest", "highest", "range"];
-        if (!in_array($this->container['number_limit_mode'], $allowed_values)) {
-            $invalid_properties[] = "invalid value for 'number_limit_mode', must be one of #{allowed_values}.";
-        }
-        $allowed_values = ["none", "weight", "package"];
-        if (!in_array($this->container['product_list_shipping_calc'], $allowed_values)) {
-            $invalid_properties[] = "invalid value for 'product_list_shipping_calc', must be one of #{allowed_values}.";
-        }
         return $invalid_properties;
     }
 
@@ -328,22 +248,6 @@ class OptionConfig implements ArrayAccess
      */
     public function valid()
     {
-        $allowed_values = ["earliest", "range", "latest"];
-        if (!in_array($this->container['date_limit_mode'], $allowed_values)) {
-            return false;
-        }
-        $allowed_values = ["specific", "all"];
-        if (!in_array($this->container['file_types_mode'], $allowed_values)) {
-            return false;
-        }
-        $allowed_values = ["", "lowest", "highest", "range"];
-        if (!in_array($this->container['number_limit_mode'], $allowed_values)) {
-            return false;
-        }
-        $allowed_values = ["none", "weight", "package"];
-        if (!in_array($this->container['product_list_shipping_calc'], $allowed_values)) {
-            return false;
-        }
         return true;
     }
 
@@ -448,10 +352,6 @@ class OptionConfig implements ArrayAccess
      */
     public function setDateLimitMode($date_limit_mode)
     {
-        $allowed_values = ['earliest', 'range', 'latest'];
-        if (!is_null($date_limit_mode) && (!in_array($date_limit_mode, $allowed_values))) {
-            throw new \InvalidArgumentException("Invalid value for 'date_limit_mode', must be one of 'earliest', 'range', 'latest'");
-        }
         $this->container['date_limit_mode'] = $date_limit_mode;
 
         return $this;
@@ -515,10 +415,6 @@ class OptionConfig implements ArrayAccess
      */
     public function setFileTypesMode($file_types_mode)
     {
-        $allowed_values = ['specific', 'all'];
-        if (!is_null($file_types_mode) && (!in_array($file_types_mode, $allowed_values))) {
-            throw new \InvalidArgumentException("Invalid value for 'file_types_mode', must be one of 'specific', 'all'");
-        }
         $this->container['file_types_mode'] = $file_types_mode;
 
         return $this;
@@ -729,10 +625,6 @@ class OptionConfig implements ArrayAccess
      */
     public function setNumberLimitMode($number_limit_mode)
     {
-        $allowed_values = ['', 'lowest', 'highest', 'range'];
-        if (!is_null($number_limit_mode) && (!in_array($number_limit_mode, $allowed_values))) {
-            throw new \InvalidArgumentException("Invalid value for 'number_limit_mode', must be one of '', 'lowest', 'highest', 'range'");
-        }
         $this->container['number_limit_mode'] = $number_limit_mode;
 
         return $this;
@@ -859,10 +751,6 @@ class OptionConfig implements ArrayAccess
      */
     public function setProductListShippingCalc($product_list_shipping_calc)
     {
-        $allowed_values = ['none', 'weight', 'package'];
-        if (!is_null($product_list_shipping_calc) && (!in_array($product_list_shipping_calc, $allowed_values))) {
-            throw new \InvalidArgumentException("Invalid value for 'product_list_shipping_calc', must be one of 'none', 'weight', 'package'");
-        }
         $this->container['product_list_shipping_calc'] = $product_list_shipping_calc;
 
         return $this;

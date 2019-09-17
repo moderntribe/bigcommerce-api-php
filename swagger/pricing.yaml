@@ -122,7 +122,6 @@ definitions:
       discount_amount:
         type: number
       discount_type:
-        enum: [price, percent, fixed]
         type: string
   PricingResponse:
     type: object

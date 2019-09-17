@@ -159,11 +159,6 @@ parameters:
     required: false
     in: query
     type: string
-    enum:
-      - name
-      - description
-      - date_created
-      - date_modified
   DirectionParam:
     name: direction
     description: |
@@ -171,9 +166,6 @@ parameters:
     required: false
     in: query
     type: string
-    enum:
-      - asc
-      - desc
 definitions:
   Script:
     type: object
@@ -200,30 +192,15 @@ definitions:
       load_method:
         type: string
         description: The load method to use for the script. Values are `default`, `async`, or `defer`.
-        enum:
-          - default
-          - async
-          - defer
       location:
         type: string
         description: Where on the page to place the script. Values are `head` or `footer`.
-        enum:
-          - head
-          - footer
       visibility:
         type: string
         description: Which set of pages the script should load on. The values allowed for this parameter are `storefront`, `all_pages`, `checkout` and `order_confirmation`. Please note that you need to have `Checkout content` scope to use `all_pages` and `checkout`.
-        enum:
-          - storefront
-          - all_pages
-          - checkout
-          - order_confirmation
       kind:
         type: string
         description: What type of script this is. Values are `src` - a `script` tag will be generated with its `src` attribute set to the value of `src`; `script_tag` - The value of `html` will be injected directly onto the page.
-        enum:
-          - src
-          - script_tag
       api_client_id:
         type: string
         description: The client id of the API user that created this script, or blank if created by other means.
@@ -277,42 +254,18 @@ definitions:
         type: string
         description: The load method to use for the script. Acceptable values are `default`, `async`, or `defer`.
         default: defer
-        enum:
-          - default
-          - async
-          - defer
       location:
         type: string
         description: Where on the page to place the script. Acceptable values are `head` or `footer`.
         default: footer
-        enum:
-          - head
-          - footer
       visibility:
         type: string
         description: Which set of pages the script should load on. The values allowed for this parameter are `storefront`, `all_pages`, `checkout` and `order_confirmation`. Please note that you need to have `Checkout content` scope to use `all_pages` and `checkout`.
         default: storefront
-        enum:
-          - storefront
-          - all_pages
-          - checkout
-          - order_confirmation
       kind:
         type: string
         description: What type of script this is. Acceptable values are `src` - a `script` tag will be generated with its `src` attribute set to the value of `src`; `script_tag` - The value of `html` (which must contain a single `script` tag) will be injected directly onto the page.
         default: src
-        enum:
-          - src
-          - html
-    example:
-      name: jQuery
-      description: The Write Less, Do More, JavaScript Library.
-      src: https://code.jquery.com/jquery-3.2.1.min.js
-      auto_uninstall: true
-      load_method: defer
-      location: head
-      visibility: storefront
-      kind: src
   ScriptPut:
       properties:
         name:
@@ -340,42 +293,18 @@ definitions:
           type: string
           description: The load method to use for the script. Acceptable values are `default`, `async`, or `defer`.
           default: defer
-          enum:
-            - default
-            - async
-            - defer
         location:
           type: string
           description: Where on the page to place the script. Acceptable values are `head` or `footer`.
           default: footer
-          enum:
-            - head
-            - footer
         visibility:
           type: string
           description: Which set of pages the script should load on. The values allowed for this parameter are `storefront`, `all_pages`, `checkout` and `order_confirmation`. Please note that you need to have `Checkout content` scope to use `all_pages` and `checkout`.
           default: storefront
-          enum:
-            - storefront
-            - all_pages
-            - checkout
-            - order_confirmation
         kind:
           type: string
           description: What type of script this is. Acceptable values are `src` - a `script` tag will be generated with its `src` attribute set to the value of `src`; `script_tag` - The value of `html` (which must contain a single `script` tag) will be injected directly onto the page.
           default: src
-          enum:
-            - src
-            - html
-      example:
-        name: jQuery
-        description: The Write Less, Do More, JavaScript Library.
-        src: https://code.jquery.com/jquery-3.2.1.min.js
-        auto_uninstall: true
-        load_method: defer
-        location: head
-        visibility: storefront
-        kind: src
   ScriptResponse:
     type: object
     properties:

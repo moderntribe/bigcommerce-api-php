@@ -98,24 +98,8 @@ class BulkPricingTier implements ArrayAccess
         return self::$getters;
     }
 
-    const TYPE_FIXED = 'fixed';
-    const TYPE_PRICE = 'price';
-    const TYPE_PERCENT = 'percent';
     
 
-    
-    /**
-     * Gets allowable values of the enum
-     * @return string[]
-     */
-    public function getTypeAllowableValues()
-    {
-        return [
-            self::TYPE_FIXED,
-            self::TYPE_PRICE,
-            self::TYPE_PERCENT,
-        ];
-    }
     
 
     /**
@@ -153,10 +137,6 @@ class BulkPricingTier implements ArrayAccess
     public function listInvalidProperties()
     {
         $invalid_properties = [];
-        $allowed_values = ["fixed", "price", "percent"];
-        if (!in_array($this->container['type'], $allowed_values)) {
-            $invalid_properties[] = "invalid value for 'type', must be one of #{allowed_values}.";
-        }
         return $invalid_properties;
     }
 
@@ -168,10 +148,6 @@ class BulkPricingTier implements ArrayAccess
      */
     public function valid()
     {
-        $allowed_values = ["fixed", "price", "percent"];
-        if (!in_array($this->container['type'], $allowed_values)) {
-            return false;
-        }
         return true;
     }
 
@@ -234,10 +210,6 @@ class BulkPricingTier implements ArrayAccess
      */
     public function setType($type)
     {
-        $allowed_values = ['fixed', 'price', 'percent'];
-        if (!is_null($type) && (!in_array($type, $allowed_values))) {
-            throw new \InvalidArgumentException("Invalid value for 'type', must be one of 'fixed', 'price', 'percent'");
-        }
         $this->container['type'] = $type;
 
         return $this;

@@ -134,68 +134,8 @@ class OrderShipment implements ArrayAccess
         return self::$getters;
     }
 
-    const SHIPPING_PROVIDER_AUSPOST = 'auspost';
-    const SHIPPING_PROVIDER_CANADAPOST = 'canadapost';
-    const SHIPPING_PROVIDER_ENDICIA = 'endicia';
-    const SHIPPING_PROVIDER_USPS = 'usps';
-    const SHIPPING_PROVIDER_FEDEX = 'fedex';
-    const SHIPPING_PROVIDER_ROYALMAIL = 'royalmail';
-    const SHIPPING_PROVIDER_UPS = 'ups';
-    const SHIPPING_PROVIDER_UPSREADY = 'upsready';
-    const SHIPPING_PROVIDER_UPSONLINE = 'upsonline';
-    const SHIPPING_PROVIDER_SHIPPERHQ = 'shipperhq';
-    const SHIPPING_PROVIDER_ = '';
-    const TRACKING_CARRIER_AUSPOST = 'auspost';
-    const TRACKING_CARRIER_CANADAPOST = 'canadapost';
-    const TRACKING_CARRIER_ENDICIA = 'endicia';
-    const TRACKING_CARRIER_USPS = 'usps';
-    const TRACKING_CARRIER_FEDEX = 'fedex';
-    const TRACKING_CARRIER_ROYALMAIL = 'royalmail';
-    const TRACKING_CARRIER_UPS = 'ups';
-    const TRACKING_CARRIER_UPSREADY = 'upsready';
-    const TRACKING_CARRIER_SHIPPERHQ = 'shipperhq';
     
 
-    
-    /**
-     * Gets allowable values of the enum
-     * @return string[]
-     */
-    public function getShippingProviderAllowableValues()
-    {
-        return [
-            self::SHIPPING_PROVIDER_AUSPOST,
-            self::SHIPPING_PROVIDER_CANADAPOST,
-            self::SHIPPING_PROVIDER_ENDICIA,
-            self::SHIPPING_PROVIDER_USPS,
-            self::SHIPPING_PROVIDER_FEDEX,
-            self::SHIPPING_PROVIDER_ROYALMAIL,
-            self::SHIPPING_PROVIDER_UPS,
-            self::SHIPPING_PROVIDER_UPSREADY,
-            self::SHIPPING_PROVIDER_UPSONLINE,
-            self::SHIPPING_PROVIDER_SHIPPERHQ,
-            self::SHIPPING_PROVIDER_,
-        ];
-    }
-    
-    /**
-     * Gets allowable values of the enum
-     * @return string[]
-     */
-    public function getTrackingCarrierAllowableValues()
-    {
-        return [
-            self::TRACKING_CARRIER_AUSPOST,
-            self::TRACKING_CARRIER_CANADAPOST,
-            self::TRACKING_CARRIER_ENDICIA,
-            self::TRACKING_CARRIER_USPS,
-            self::TRACKING_CARRIER_FEDEX,
-            self::TRACKING_CARRIER_ROYALMAIL,
-            self::TRACKING_CARRIER_UPS,
-            self::TRACKING_CARRIER_UPSREADY,
-            self::TRACKING_CARRIER_SHIPPERHQ,
-        ];
-    }
     
 
     /**
@@ -242,14 +182,6 @@ class OrderShipment implements ArrayAccess
     public function listInvalidProperties()
     {
         $invalid_properties = [];
-        $allowed_values = ["auspost", "canadapost", "endicia", "usps", "fedex", "royalmail", "ups", "upsready", "upsonline", "shipperhq", " "];
-        if (!in_array($this->container['shipping_provider'], $allowed_values)) {
-            $invalid_properties[] = "invalid value for 'shipping_provider', must be one of #{allowed_values}.";
-        }
-        $allowed_values = ["auspost", "canadapost", "endicia", "usps", "fedex", "royalmail", "ups", "upsready", "shipperhq"];
-        if (!in_array($this->container['tracking_carrier'], $allowed_values)) {
-            $invalid_properties[] = "invalid value for 'tracking_carrier', must be one of #{allowed_values}.";
-        }
         return $invalid_properties;
     }
 
@@ -261,14 +193,6 @@ class OrderShipment implements ArrayAccess
      */
     public function valid()
     {
-        $allowed_values = ["auspost", "canadapost", "endicia", "usps", "fedex", "royalmail", "ups", "upsready", "upsonline", "shipperhq", " "];
-        if (!in_array($this->container['shipping_provider'], $allowed_values)) {
-            return false;
-        }
-        $allowed_values = ["auspost", "canadapost", "endicia", "usps", "fedex", "royalmail", "ups", "upsready", "shipperhq"];
-        if (!in_array($this->container['tracking_carrier'], $allowed_values)) {
-            return false;
-        }
         return true;
     }
 
@@ -436,10 +360,6 @@ class OrderShipment implements ArrayAccess
      */
     public function setShippingProvider($shipping_provider)
     {
-        $allowed_values = ['auspost', 'canadapost', 'endicia', 'usps', 'fedex', 'royalmail', 'ups', 'upsready', 'upsonline', 'shipperhq', ' '];
-        if (!is_null($shipping_provider) && (!in_array($shipping_provider, $allowed_values))) {
-            throw new \InvalidArgumentException("Invalid value for 'shipping_provider', must be one of 'auspost', 'canadapost', 'endicia', 'usps', 'fedex', 'royalmail', 'ups', 'upsready', 'upsonline', 'shipperhq', ' '");
-        }
         $this->container['shipping_provider'] = $shipping_provider;
 
         return $this;
@@ -461,10 +381,6 @@ class OrderShipment implements ArrayAccess
      */
     public function setTrackingCarrier($tracking_carrier)
     {
-        $allowed_values = ['auspost', 'canadapost', 'endicia', 'usps', 'fedex', 'royalmail', 'ups', 'upsready', 'shipperhq'];
-        if (!is_null($tracking_carrier) && (!in_array($tracking_carrier, $allowed_values))) {
-            throw new \InvalidArgumentException("Invalid value for 'tracking_carrier', must be one of 'auspost', 'canadapost', 'endicia', 'usps', 'fedex', 'royalmail', 'ups', 'upsready', 'shipperhq'");
-        }
         $this->container['tracking_carrier'] = $tracking_carrier;
 
         return $this;

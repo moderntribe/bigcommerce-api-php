@@ -134,26 +134,8 @@ class OrderTax implements ArrayAccess
         return self::$getters;
     }
 
-    const LINE_ITEM_TYPE_ITEM = 'item';
-    const LINE_ITEM_TYPE_SHIPPING = 'shipping';
-    const LINE_ITEM_TYPE_HANDLING = 'handling';
-    const LINE_ITEM_TYPE_GIFT_WRAPPING = 'gift-wrapping';
     
 
-    
-    /**
-     * Gets allowable values of the enum
-     * @return string[]
-     */
-    public function getLineItemTypeAllowableValues()
-    {
-        return [
-            self::LINE_ITEM_TYPE_ITEM,
-            self::LINE_ITEM_TYPE_SHIPPING,
-            self::LINE_ITEM_TYPE_HANDLING,
-            self::LINE_ITEM_TYPE_GIFT_WRAPPING,
-        ];
-    }
     
 
     /**
@@ -200,10 +182,6 @@ class OrderTax implements ArrayAccess
     public function listInvalidProperties()
     {
         $invalid_properties = [];
-        $allowed_values = ["item", "shipping", "handling", "gift-wrapping"];
-        if (!in_array($this->container['line_item_type'], $allowed_values)) {
-            $invalid_properties[] = "invalid value for 'line_item_type', must be one of #{allowed_values}.";
-        }
         return $invalid_properties;
     }
 
@@ -215,10 +193,6 @@ class OrderTax implements ArrayAccess
      */
     public function valid()
     {
-        $allowed_values = ["item", "shipping", "handling", "gift-wrapping"];
-        if (!in_array($this->container['line_item_type'], $allowed_values)) {
-            return false;
-        }
         return true;
     }
 
@@ -491,10 +465,6 @@ class OrderTax implements ArrayAccess
      */
     public function setLineItemType($line_item_type)
     {
-        $allowed_values = ['item', 'shipping', 'handling', 'gift-wrapping'];
-        if (!is_null($line_item_type) && (!in_array($line_item_type, $allowed_values))) {
-            throw new \InvalidArgumentException("Invalid value for 'line_item_type', must be one of 'item', 'shipping', 'handling', 'gift-wrapping'");
-        }
         $this->container['line_item_type'] = $line_item_type;
 
         return $this;

@@ -122,42 +122,8 @@ class Metafield extends MetafieldBase implements ArrayAccess
         return self::$getters;
     }
 
-    const PERMISSION_SET_APP_ONLY = 'app_only';
-    const PERMISSION_SET_READ = 'read';
-    const PERMISSION_SET_WRITE = 'write';
-    const RESOURCE_TYPE_CATEGORY = 'category';
-    const RESOURCE_TYPE_BRAND = 'brand';
-    const RESOURCE_TYPE_PRODUCT = 'product';
-    const RESOURCE_TYPE_VARIANT = 'variant';
     
 
-    
-    /**
-     * Gets allowable values of the enum
-     * @return string[]
-     */
-    public function getPermissionSetAllowableValues()
-    {
-        return [
-            self::PERMISSION_SET_APP_ONLY,
-            self::PERMISSION_SET_READ,
-            self::PERMISSION_SET_WRITE,
-        ];
-    }
-    
-    /**
-     * Gets allowable values of the enum
-     * @return string[]
-     */
-    public function getResourceTypeAllowableValues()
-    {
-        return [
-            self::RESOURCE_TYPE_CATEGORY,
-            self::RESOURCE_TYPE_BRAND,
-            self::RESOURCE_TYPE_PRODUCT,
-            self::RESOURCE_TYPE_VARIANT,
-        ];
-    }
     
 
     /**
@@ -201,10 +167,6 @@ class Metafield extends MetafieldBase implements ArrayAccess
     public function listInvalidProperties()
     {
         $invalid_properties = [];
-        $allowed_values = ["app_only", "read", "write"];
-        if (!in_array($this->container['permission_set'], $allowed_values)) {
-            $invalid_properties[] = "invalid value for 'permission_set', must be one of #{allowed_values}.";
-        }
         if (strlen($this->container['namespace']) > 64) {
             $invalid_properties[] = "invalid value for 'namespace', the character length must be smaller than or equal to 64.";
         }
@@ -229,10 +191,6 @@ class Metafield extends MetafieldBase implements ArrayAccess
         if (strlen($this->container['description']) < 0) {
             $invalid_properties[] = "invalid value for 'description', the character length must be bigger than or equal to 0.";
         }
-        $allowed_values = ["category", "brand", "product", "variant"];
-        if (!in_array($this->container['resource_type'], $allowed_values)) {
-            $invalid_properties[] = "invalid value for 'resource_type', must be one of #{allowed_values}.";
-        }
         if ($this->container['resource_id'] > 10000000000) {
             $invalid_properties[] = "invalid value for 'resource_id', must be smaller than or equal to 10000000000.";
         }
@@ -250,10 +208,6 @@ class Metafield extends MetafieldBase implements ArrayAccess
      */
     public function valid()
     {
-        $allowed_values = ["app_only", "read", "write"];
-        if (!in_array($this->container['permission_set'], $allowed_values)) {
-            return false;
-        }
         if (strlen($this->container['namespace']) > 64) {
             return false;
         }
@@ -276,10 +230,6 @@ class Metafield extends MetafieldBase implements ArrayAccess
             return false;
         }
         if (strlen($this->container['description']) < 0) {
-            return false;
-        }
-        $allowed_values = ["category", "brand", "product", "variant"];
-        if (!in_array($this->container['resource_type'], $allowed_values)) {
             return false;
         }
         if ($this->container['resource_id'] > 10000000000) {
@@ -308,10 +258,6 @@ class Metafield extends MetafieldBase implements ArrayAccess
      */
     public function setPermissionSet($permission_set)
     {
-        $allowed_values = ['app_only', 'read', 'write'];
-        if (!is_null($permission_set) && (!in_array($permission_set, $allowed_values))) {
-            throw new \InvalidArgumentException("Invalid value for 'permission_set', must be one of 'app_only', 'read', 'write'");
-        }
         $this->container['permission_set'] = $permission_set;
 
         return $this;
@@ -441,10 +387,6 @@ class Metafield extends MetafieldBase implements ArrayAccess
      */
     public function setResourceType($resource_type)
     {
-        $allowed_values = ['category', 'brand', 'product', 'variant'];
-        if (!is_null($resource_type) && (!in_array($resource_type, $allowed_values))) {
-            throw new \InvalidArgumentException("Invalid value for 'resource_type', must be one of 'category', 'brand', 'product', 'variant'");
-        }
         $this->container['resource_type'] = $resource_type;
 
         return $this;

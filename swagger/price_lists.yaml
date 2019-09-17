@@ -427,9 +427,6 @@ parameters:
     required: false
     in: query
     type: string
-    enum:
-      - bulk_pricing_tiers
-      - sku
   FilterPriceListIdParam:
      name: price_list_id
      description: |
@@ -657,10 +654,6 @@ definitions:
           The maximum allowed quantity of associated variant in the cart to qualify for this tiers pricing.
       type:
         type: string
-        enum:
-          - fixed
-          - price
-          - percent
         description: |
           The type of adjustment that is made. Acceptable values: price – the adjustment amount per product; percent – the adjustment as a percentage of the original price; fixed – the adjusted absolute price of the product.
       amount:

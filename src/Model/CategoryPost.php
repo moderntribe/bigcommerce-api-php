@@ -138,36 +138,8 @@ class CategoryPost extends CategoryBase implements ArrayAccess
         return self::$getters;
     }
 
-    const DEFAULT_PRODUCT_SORT_USE_STORE_SETTINGS = 'use_store_settings';
-    const DEFAULT_PRODUCT_SORT_FEATURED = 'featured';
-    const DEFAULT_PRODUCT_SORT_NEWEST = 'newest';
-    const DEFAULT_PRODUCT_SORT_BEST_SELLING = 'best_selling';
-    const DEFAULT_PRODUCT_SORT_ALPHA_ASC = 'alpha_asc';
-    const DEFAULT_PRODUCT_SORT_ALPHA_DESC = 'alpha_desc';
-    const DEFAULT_PRODUCT_SORT_AVG_CUSTOMER_REVIEW = 'avg_customer_review';
-    const DEFAULT_PRODUCT_SORT_PRICE_ASC = 'price_asc';
-    const DEFAULT_PRODUCT_SORT_PRICE_DESC = 'price_desc';
     
 
-    
-    /**
-     * Gets allowable values of the enum
-     * @return string[]
-     */
-    public function getDefaultProductSortAllowableValues()
-    {
-        return [
-            self::DEFAULT_PRODUCT_SORT_USE_STORE_SETTINGS,
-            self::DEFAULT_PRODUCT_SORT_FEATURED,
-            self::DEFAULT_PRODUCT_SORT_NEWEST,
-            self::DEFAULT_PRODUCT_SORT_BEST_SELLING,
-            self::DEFAULT_PRODUCT_SORT_ALPHA_ASC,
-            self::DEFAULT_PRODUCT_SORT_ALPHA_DESC,
-            self::DEFAULT_PRODUCT_SORT_AVG_CUSTOMER_REVIEW,
-            self::DEFAULT_PRODUCT_SORT_PRICE_ASC,
-            self::DEFAULT_PRODUCT_SORT_PRICE_DESC,
-        ];
-    }
     
 
     /**
@@ -251,10 +223,6 @@ class CategoryPost extends CategoryBase implements ArrayAccess
         if (strlen($this->container['layout_file']) < 0) {
             $invalid_properties[] = "invalid value for 'layout_file', the character length must be bigger than or equal to 0.";
         }
-        $allowed_values = ["use_store_settings", "featured", "newest", "best_selling", "alpha_asc", "alpha_desc", "avg_customer_review", "price_asc", "price_desc"];
-        if (!in_array($this->container['default_product_sort'], $allowed_values)) {
-            $invalid_properties[] = "invalid value for 'default_product_sort', must be one of #{allowed_values}.";
-        }
         return $invalid_properties;
     }
 
@@ -300,10 +268,6 @@ class CategoryPost extends CategoryBase implements ArrayAccess
             return false;
         }
         if (strlen($this->container['layout_file']) < 0) {
-            return false;
-        }
-        $allowed_values = ["use_store_settings", "featured", "newest", "best_selling", "alpha_asc", "alpha_desc", "avg_customer_review", "price_asc", "price_desc"];
-        if (!in_array($this->container['default_product_sort'], $allowed_values)) {
             return false;
         }
         return true;
@@ -594,10 +558,6 @@ class CategoryPost extends CategoryBase implements ArrayAccess
      */
     public function setDefaultProductSort($default_product_sort)
     {
-        $allowed_values = ['use_store_settings', 'featured', 'newest', 'best_selling', 'alpha_asc', 'alpha_desc', 'avg_customer_review', 'price_asc', 'price_desc'];
-        if (!is_null($default_product_sort) && (!in_array($default_product_sort, $allowed_values))) {
-            throw new \InvalidArgumentException("Invalid value for 'default_product_sort', must be one of 'use_store_settings', 'featured', 'newest', 'best_selling', 'alpha_asc', 'alpha_desc', 'avg_customer_review', 'price_asc', 'price_desc'");
-        }
         $this->container['default_product_sort'] = $default_product_sort;
 
         return $this;
