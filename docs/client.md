@@ -21,10 +21,21 @@ an access token](/docs/examples/oauth-token.md).
 There are then a number of APIs that you can instantiate using the factory object:
 
 ```php
-$api->catalog();
+$api->abandoned_cart()
 $api->cart();
+$api->catalog();
 $api->channels();
+$api->orders();
+$api->price_lists();
+$api->pricing();
+$api->scripts();
 $api->sites();
+$api->store();
+$api->subscribers();
+$api->themes();
+$api->transactions();
+$api->widgets();
+$api->wishlists();
 ```
 
 ## Usage Examples

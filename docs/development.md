@@ -70,3 +70,4 @@ To clean up all files created by the build process, remove the directories
 
 1. Add a new method for the API to `\BigCommerce\Api\ApiFactory`.
 2. The method should instantiate a new instance of the API class, passing it the v2 or v3 client as appropriate.
+3. Add the method to the list in [client.md](/docs/client.md).
