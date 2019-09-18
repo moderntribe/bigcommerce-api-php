@@ -19,38 +19,22 @@ administration interface.
 When your application receives a GET request at the auth callback URL,
 the request will include the query parameters `code`, `scope`, and `context`.
 Using these parameters, along with your app's Client ID and Client Secret,
-send a `POST` request back to BigCommerce, at https://login.bigcommerce.com/oauth2/token.
+send a request back to BigCommerce to get a permanent Access Token.
 
 ```php
-$request_token_url = 'https://login.bigcommerce.com/oauth2/token';
-$request_body = [
-	'client_id'     => $client_id,
-	'client_secret' => $client_secret,
-	'redirect_uri'  => $original_auth_callback_url,
-	'grant_type'    => 'authorization_code',
-	'code'          => filter_input( INPUT_GET, 'code' ),
-	'scope'         => filter_input( INPUT_GET, 'scope' ),
-	'context'       => filter_input( INPUT_GET, 'context' ),
-];
+$auth          = new \BigCommerce\Api\OAuth( $client_id, $client_secret );
+$authorization = $auth->authorizeWithBigcommerce( 
+  filter_input( INPUT_GET, 'code' ),
+  filter_input( INPUT_GET, 'scope' ),
+  filter_input( INPUT_GET, 'context' )
+);
 
-$ch = curl_init();
-curl_setopt( $ch, CURLOPT_URL, $request_token_url );
-curl_setopt( $ch, CURLOPT_RETURNTRANSFER, 1 );
-curl_setopt( $ch, CURLOPT_POST, 1 );
-curl_setopt( $ch, CURLOPT_POSTFIELDS, http_build_query( $request_body ) ); 
-curl_setopt( $ch, CURLOPT_HTTPHEADER, [ 'Content-Type: application/x-www-form-urlencoded' ] ); 
+$access_token = $authorization['access_token'];
+$api_url      = $authorization['api_url'];
 
-$response = json_decode( curl_exec($ch), true );
-
-curl_close( $ch );
-
-$access_token = $response['access_token'];
-$context      = explode( '/', $response['context'] );
-$store_hash   = $context[1];
-$api_url      = sprintf( 'https://api.bigcommerce.com/stores/%s', $store_hash );
 ```
 
-Store your Access Token in a safe place, and use it along with the Client ID
+Store your Access Token and API URL in a safe place, and use it along with the Client ID
 when instantiating the API client.
 
 ```php
