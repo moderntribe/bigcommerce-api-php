@@ -40,7 +40,7 @@ class AbandonedCartResponse implements ArrayAccess
       */
     protected static $swaggerTypes = [
         'meta' => 'object',
-        'data' => 'object'
+        'data' => '\BigCommerce\Api\Model\AbandonedCartInfo'
     ];
 
     public static function swaggerTypes()
@@ -165,7 +165,7 @@ class AbandonedCartResponse implements ArrayAccess
 
     /**
      * Gets data
-     * @return object
+     * @return \BigCommerce\Api\Model\AbandonedCartInfo
      */
     public function getData()
     {
@@ -174,7 +174,7 @@ class AbandonedCartResponse implements ArrayAccess
 
     /**
      * Sets data
-     * @param object $data Contain an AbandonedCartInfo object, which will have a single cart_id identifier .
+     * @param \BigCommerce\Api\Model\AbandonedCartInfo $data
      * @return $this
      */
     public function setData($data)

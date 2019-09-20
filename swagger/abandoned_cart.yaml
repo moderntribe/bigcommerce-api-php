@@ -12,7 +12,7 @@ consumes:
 produces:
   - application/json
 paths:
-  /abandoned_carts/{token}:
+  /abandoned-carts/{token}:
     get:
       description: Returns abandoned cart id.
       operationId: recover-cart
@@ -33,7 +33,6 @@ paths:
         404:
           description: Cart not found.
 definitions:
-# --------------  common   -----------
   AbandonedCartResponse:
     type: object
     properties:
@@ -41,10 +40,7 @@ definitions:
         type: object
         description: Empty object.
       data:
-        type: object
-        items:
-          $ref: "#/definitions/AbandonedCartInfo"
-        description: Contain an AbandonedCartInfo object, which will have a single cart_id identifier .
+        $ref: "#/definitions/AbandonedCartInfo"
   AbandonedCartInfo:
     type: object
     properties:
