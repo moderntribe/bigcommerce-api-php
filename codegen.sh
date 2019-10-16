@@ -20,7 +20,7 @@ mkdir -p "${build_dir}"
 
 for api in "${apis[@]}"; do
 
-input="/sdk/swagger/${api}.yaml"
+input="/sdk/vendor/moderntribe/bigcommerce-api-swagger/swagger/${api}.yaml"
 template_dir="/sdk/swagger/templates"
 output="/sdk/.swagger-codegen/build"
 config="/sdk/config.json"
