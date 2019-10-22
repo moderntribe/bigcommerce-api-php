@@ -45,4 +45,5 @@ $api->wishlists();
 * [Create a product with variants and a modifier](/docs/examples/create-product.md)
 * [Update variants for a product](/docs/examples/udate-variants.md)
 * [Add a product to a cart](/docs/examples/add-to-cart.md)
+* [Update an existing order's status](/docs/examples/update-order.md)
 * [Create a widget](/docs/examples/create-widget.md)
