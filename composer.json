@@ -15,6 +15,13 @@
             "homepage": "https://developer.bigcommerce.com/"
         }
     ],
+    "config": {
+        "vendor-dir": "vendor",
+        "preferred-install": {
+            "moderntribe/*": "source",
+            "*": "dist"
+        }
+    },
     "require": {
         "php": ">=5.6",
         "ext-curl": "*",

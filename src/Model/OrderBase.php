@@ -53,15 +53,12 @@ class OrderBase implements ArrayAccess
         'base_wrapping_cost' => 'string',
         'wrapping_cost_ex_tax' => 'string',
         'wrapping_cost_inc_tax' => 'string',
-        'total_ex_tax' => 'string',
-        'total_inc_tax' => 'string',
         'items_total' => 'float',
         'items_shipped' => 'float',
         'payment_method' => 'string',
         'payment_provider_id' => 'int',
         'refunded_amount' => 'string',
         'order_is_digital' => 'bool',
-        'gift_certificate_amount' => 'string',
         'ip_address' => 'string',
         'geoip_country' => 'string',
         'geoip_country_iso2' => 'string',
@@ -69,7 +66,6 @@ class OrderBase implements ArrayAccess
         'customer_message' => 'string',
         'discount_amount' => 'string',
         'is_deleted' => 'bool',
-        'is_email_opt_in' => 'bool',
         'credit_card_type' => 'int',
         'ebay_order_id' => 'string',
         'external_source' => 'string',
@@ -104,15 +100,12 @@ class OrderBase implements ArrayAccess
         'base_wrapping_cost' => 'base_wrapping_cost',
         'wrapping_cost_ex_tax' => 'wrapping_cost_ex_tax',
         'wrapping_cost_inc_tax' => 'wrapping_cost_inc_tax',
-        'total_ex_tax' => 'total_ex_tax',
-        'total_inc_tax' => 'total_inc_tax',
         'items_total' => 'items_total',
         'items_shipped' => 'items_shipped',
         'payment_method' => 'payment_method',
         'payment_provider_id' => 'payment_provider_id',
         'refunded_amount' => 'refunded_amount',
         'order_is_digital' => 'order_is_digital',
-        'gift_certificate_amount' => 'gift_certificate_amount',
         'ip_address' => 'ip_address',
         'geoip_country' => 'geoip_country',
         'geoip_country_iso2' => 'geoip_country_iso2',
@@ -120,7 +113,6 @@ class OrderBase implements ArrayAccess
         'customer_message' => 'customer_message',
         'discount_amount' => 'discount_amount',
         'is_deleted' => 'is_deleted',
-        'is_email_opt_in' => 'is_email_opt_in',
         'credit_card_type' => 'credit_card_type',
         'ebay_order_id' => 'ebay_order_id',
         'external_source' => 'external_source',
@@ -150,15 +142,12 @@ class OrderBase implements ArrayAccess
         'base_wrapping_cost' => 'setBaseWrappingCost',
         'wrapping_cost_ex_tax' => 'setWrappingCostExTax',
         'wrapping_cost_inc_tax' => 'setWrappingCostIncTax',
-        'total_ex_tax' => 'setTotalExTax',
-        'total_inc_tax' => 'setTotalIncTax',
         'items_total' => 'setItemsTotal',
         'items_shipped' => 'setItemsShipped',
         'payment_method' => 'setPaymentMethod',
         'payment_provider_id' => 'setPaymentProviderId',
         'refunded_amount' => 'setRefundedAmount',
         'order_is_digital' => 'setOrderIsDigital',
-        'gift_certificate_amount' => 'setGiftCertificateAmount',
         'ip_address' => 'setIpAddress',
         'geoip_country' => 'setGeoipCountry',
         'geoip_country_iso2' => 'setGeoipCountryIso2',
@@ -166,7 +155,6 @@ class OrderBase implements ArrayAccess
         'customer_message' => 'setCustomerMessage',
         'discount_amount' => 'setDiscountAmount',
         'is_deleted' => 'setIsDeleted',
-        'is_email_opt_in' => 'setIsEmailOptIn',
         'credit_card_type' => 'setCreditCardType',
         'ebay_order_id' => 'setEbayOrderId',
         'external_source' => 'setExternalSource',
@@ -196,15 +184,12 @@ class OrderBase implements ArrayAccess
         'base_wrapping_cost' => 'getBaseWrappingCost',
         'wrapping_cost_ex_tax' => 'getWrappingCostExTax',
         'wrapping_cost_inc_tax' => 'getWrappingCostIncTax',
-        'total_ex_tax' => 'getTotalExTax',
-        'total_inc_tax' => 'getTotalIncTax',
         'items_total' => 'getItemsTotal',
         'items_shipped' => 'getItemsShipped',
         'payment_method' => 'getPaymentMethod',
         'payment_provider_id' => 'getPaymentProviderId',
         'refunded_amount' => 'getRefundedAmount',
         'order_is_digital' => 'getOrderIsDigital',
-        'gift_certificate_amount' => 'getGiftCertificateAmount',
         'ip_address' => 'getIpAddress',
         'geoip_country' => 'getGeoipCountry',
         'geoip_country_iso2' => 'getGeoipCountryIso2',
@@ -212,7 +197,6 @@ class OrderBase implements ArrayAccess
         'customer_message' => 'getCustomerMessage',
         'discount_amount' => 'getDiscountAmount',
         'is_deleted' => 'getIsDeleted',
-        'is_email_opt_in' => 'getIsEmailOptIn',
         'credit_card_type' => 'getCreditCardType',
         'ebay_order_id' => 'getEbayOrderId',
         'external_source' => 'getExternalSource',
@@ -268,15 +252,12 @@ class OrderBase implements ArrayAccess
         $this->container['base_wrapping_cost'] = array_key_exists('base_wrapping_cost', $data) ? $data['base_wrapping_cost'] : null;
         $this->container['wrapping_cost_ex_tax'] = array_key_exists('wrapping_cost_ex_tax', $data) ? $data['wrapping_cost_ex_tax'] : null;
         $this->container['wrapping_cost_inc_tax'] = array_key_exists('wrapping_cost_inc_tax', $data) ? $data['wrapping_cost_inc_tax'] : null;
-        $this->container['total_ex_tax'] = array_key_exists('total_ex_tax', $data) ? $data['total_ex_tax'] : null;
-        $this->container['total_inc_tax'] = array_key_exists('total_inc_tax', $data) ? $data['total_inc_tax'] : null;
         $this->container['items_total'] = array_key_exists('items_total', $data) ? $data['items_total'] : null;
         $this->container['items_shipped'] = array_key_exists('items_shipped', $data) ? $data['items_shipped'] : null;
         $this->container['payment_method'] = array_key_exists('payment_method', $data) ? $data['payment_method'] : null;
         $this->container['payment_provider_id'] = array_key_exists('payment_provider_id', $data) ? $data['payment_provider_id'] : null;
         $this->container['refunded_amount'] = array_key_exists('refunded_amount', $data) ? $data['refunded_amount'] : null;
         $this->container['order_is_digital'] = array_key_exists('order_is_digital', $data) ? $data['order_is_digital'] : null;
-        $this->container['gift_certificate_amount'] = array_key_exists('gift_certificate_amount', $data) ? $data['gift_certificate_amount'] : null;
         $this->container['ip_address'] = array_key_exists('ip_address', $data) ? $data['ip_address'] : null;
         $this->container['geoip_country'] = array_key_exists('geoip_country', $data) ? $data['geoip_country'] : null;
         $this->container['geoip_country_iso2'] = array_key_exists('geoip_country_iso2', $data) ? $data['geoip_country_iso2'] : null;
@@ -284,7 +265,6 @@ class OrderBase implements ArrayAccess
         $this->container['customer_message'] = array_key_exists('customer_message', $data) ? $data['customer_message'] : null;
         $this->container['discount_amount'] = array_key_exists('discount_amount', $data) ? $data['discount_amount'] : null;
         $this->container['is_deleted'] = array_key_exists('is_deleted', $data) ? $data['is_deleted'] : null;
-        $this->container['is_email_opt_in'] = array_key_exists('is_email_opt_in', $data) ? $data['is_email_opt_in'] : null;
         $this->container['credit_card_type'] = array_key_exists('credit_card_type', $data) ? $data['credit_card_type'] : null;
         $this->container['ebay_order_id'] = array_key_exists('ebay_order_id', $data) ? $data['ebay_order_id'] : null;
         $this->container['external_source'] = array_key_exists('external_source', $data) ? $data['external_source'] : null;
@@ -622,48 +602,6 @@ class OrderBase implements ArrayAccess
     }
 
     /**
-     * Gets total_ex_tax
-     * @return string
-     */
-    public function getTotalExTax()
-    {
-        return $this->container['total_ex_tax'];
-    }
-
-    /**
-     * Sets total_ex_tax
-     * @param string $total_ex_tax Override value for the total, excluding tax. If specified, the field `total_inc_tax` is also required. (Float, Float-As-String, Integer)
-     * @return $this
-     */
-    public function setTotalExTax($total_ex_tax)
-    {
-        $this->container['total_ex_tax'] = $total_ex_tax;
-
-        return $this;
-    }
-
-    /**
-     * Gets total_inc_tax
-     * @return string
-     */
-    public function getTotalIncTax()
-    {
-        return $this->container['total_inc_tax'];
-    }
-
-    /**
-     * Sets total_inc_tax
-     * @param string $total_inc_tax Override value for the total, including tax. If specified, the field `total_ex_tax` is also required. (Float, Float-As-String, Integer)
-     * @return $this
-     */
-    public function setTotalIncTax($total_inc_tax)
-    {
-        $this->container['total_inc_tax'] = $total_inc_tax;
-
-        return $this;
-    }
-
-    /**
      * Gets items_total
      * @return float
      */
@@ -785,27 +723,6 @@ class OrderBase implements ArrayAccess
     public function setOrderIsDigital($order_is_digital)
     {
         $this->container['order_is_digital'] = $order_is_digital;
-
-        return $this;
-    }
-
-    /**
-     * Gets gift_certificate_amount
-     * @return string
-     */
-    public function getGiftCertificateAmount()
-    {
-        return $this->container['gift_certificate_amount'];
-    }
-
-    /**
-     * Sets gift_certificate_amount
-     * @param string $gift_certificate_amount A read-only value. Do not pass in a POST or PUT. (Float, Float-As-String, Integer)
-     * @return $this
-     */
-    public function setGiftCertificateAmount($gift_certificate_amount)
-    {
-        $this->container['gift_certificate_amount'] = $gift_certificate_amount;
 
         return $this;
     }
@@ -953,27 +870,6 @@ class OrderBase implements ArrayAccess
     public function setIsDeleted($is_deleted)
     {
         $this->container['is_deleted'] = $is_deleted;
-
-        return $this;
-    }
-
-    /**
-     * Gets is_email_opt_in
-     * @return bool
-     */
-    public function getIsEmailOptIn()
-    {
-        return $this->container['is_email_opt_in'];
-    }
-
-    /**
-     * Sets is_email_opt_in
-     * @param bool $is_email_opt_in Indicates whether the shopper has selected an opt-in check box (on the checkout page) to receive emails. A read-only value. Do not pass in a POST or PUT.
-     * @return $this
-     */
-    public function setIsEmailOptIn($is_email_opt_in)
-    {
-        $this->container['is_email_opt_in'] = $is_email_opt_in;
 
         return $this;
     }
