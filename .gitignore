@@ -6,3 +6,7 @@
 /swagger-codegen
 /composer.lock
 /vendor
+
+notes.txt
+
+samples/config.php
