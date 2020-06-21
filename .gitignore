@@ -10,3 +10,7 @@
 notes.txt
 
 samples/config.php
+
+*.sublime-project
+
+*.sublime-workspace

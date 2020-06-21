@@ -4,8 +4,11 @@
  * Login to your store to fill in the configuration parameters below.
  * https://login.bigcommerce.com/login
  *
- * `php getProducts.php`
+ * `php getStoreInfo.php`
  */
+
+use \BigCommerce\Api\ApiFactory;
+use \BigCommerce\Api\ApiException;
 
 // load the library
 require __DIR__ . '/../vendor/autoload.php';
@@ -14,14 +17,15 @@ require __DIR__ . '/../vendor/autoload.php';
 require 'config.php';
 
 // initialize the api
-$api     = new \BigCommerce\Api\ApiFactory($api_url, $client_id, $access_token, $client_secret);
+$api     = new ApiFactory($api_url, $client_id, $access_token, $client_secret);
 
 // get the store api
 $store = $api->store();
 
+// send a request
 try {
     $response = $store->getStore();
-} catch (\BigCommerce\Api\ApiException $e) {
+} catch (ApiException $e) {
     $error_message = $e->getMessage();
     $error_body    = $e->getResponseBody();
     $error_headers = $e->getResponseHeaders();
