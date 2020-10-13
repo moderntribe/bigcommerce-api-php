@@ -1,0 +1,16 @@
+language: php
+php:
+  - 7.2.28
+os: linux
+arch: arm64
+dist: xenial
+before_install:
+  - composer install
+stages:
+  - name: test
+jobs:
+  include:
+    - stage: test
+      name: test
+      script:
+        - ./vendor/bin/phpunit

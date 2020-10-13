@@ -1,27 +1,60 @@
-# BigCommerce API PHP Client Library
+### BigCommerce Php API
 
-PHP client for connecting to the Bigcommerce REST APIs.
+This is a collection of clients, designed to connect to the Big Commerce APIs. There is one
+client per API.
 
-## System Requirements
+https://developer.bigcommerce.com/api-reference/
 
-PHP 5.6.0 and later
+## Getting started
 
-## Documentation
+The clients are already built and tested, though this project is designed to easily rebuild and update
+clients as changes are made to the published BC apis. To get started though, that is not required.
 
-* [Usage](/docs/client.md)
-* [Contributing](/docs/development.md)
-
-## QuickStart
-
-* Create your BigCommerce Store and App if you haven't already
-* Obtain your store hash, client id, client secret and access token
-  * [BigCommerce Authentication](https://developer.bigcommerce.com/api-docs/getting-started/authentication/rest-api-authentication#obtaining-store-api-credentials#obtaining-store-api-credentials)
 * Clone this repo
-* Create examples/config.php using the sample config as a template
-* Run composer to install dependencies
-* Run samples/getStoreInfo
+* Set your store up as described under Authentication
+* Use yarn/npm to install dependencies
+* Run the test suites
+
+To run the full suite of tests: 
 
 ```
 composer install
-cd samples && php getStoreInfo.php
+./vendor/bin/phpunit
 ```
+
+To run a single test file:
+
+```
+./vendor/bin/phpunit clients/Catalog/SwaggerClient-php/test/Api/ProductsApiTest.php 
+```
+
+To run the samples:
+
+```
+php samples/widgets.php
+php samples/themes.php
+```
+
+## Authentication
+
+* Create your BigCommerce Store and App if you haven't already
+* Obtain your store hash, client id and access token
+  * [BigCommerce Authentication](https://developer.bigcommerce.com/api-docs/getting-started/authentication/rest-api-authentication#obtaining-store-api-credentials#obtaining-store-api-credentials)
+* Rename gulpfile.config.sample.json to gulpfile.config.json and fill in the values
+
+## Building the libraries
+
+```
+npm install
+gulp buildAll
+```
+
+or
+
+```
+gulp buildOne --name Sites
+```
+
+## Including a client in your project
+
+

@@ -4,13 +4,15 @@
 *.project
 /.swagger-codegen
 /swagger-codegen
-/composer.lock
-/vendor
+composer.lock
+vendor
+node_modules
+**/node_modules
 
 notes.txt
 
-samples/config.php
+bin/
 
-*.sublime-project
+gulpfile.config.json
 
-*.sublime-workspace
+**/test/config.js

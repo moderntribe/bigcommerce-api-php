@@ -1,0 +1,7 @@
+{
+  "// instructions": "copy to gulpfile.config.json and replace with your custom values",
+  
+  "clientId": "<% your BC client id %>",
+  "accessToken": "<% your BC access token %>",
+  "storeId": "<% your BC store id %>"  
+}

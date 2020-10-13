@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit bootstrap="./vendor/autoload.php"
+         colors="true"
+         convertErrorsToExceptions="true"
+         convertNoticesToExceptions="true"
+         convertWarningsToExceptions="true"
+         stopOnFailure="false">
+    <testsuites>
+        <testsuite>
+            <directory>./clients/Catalog/SwaggerClient-php/test</directory>
+            <directory>./clients/OrdersV2/SwaggerClient-php/test</directory>
+            <directory>./clients/OrdersV3/SwaggerClient-php/test</directory>
+            <directory>./clients/PriceLists/SwaggerClient-php/test</directory>
+            <directory>./clients/Scripts/SwaggerClient-php/test</directory>
+            <directory>./clients/Sites/SwaggerClient-php/test</directory>
+            <directory>./clients/StoreInfo/SwaggerClient-php/test</directory>
+            <directory>./clients/Subscribers/SwaggerClient-php/test</directory>
+            <directory>./clients/Themes/SwaggerClient-php/test</directory>
+            <directory>./clients/Widgets/SwaggerClient-php/test</directory>
+        </testsuite>
+    </testsuites>
+
+</phpunit>
+
+
+
+
+
+
+
+
+
+
+
+
+

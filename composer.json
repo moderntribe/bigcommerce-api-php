@@ -1,35 +1,59 @@
 {
-    "name": "moderntribe/bigcommerce-api-php",
-    "description": "",
+    "name": "tribe/bigcommerce-api",
+    "description": "Collection of Big Commerce API clients in php.",
     "keywords": [
         "swagger",
         "php",
         "sdk",
         "api"
     ],
-    "homepage": "https://developer.bigcommerce.com/",
-    "license": "Apache-2.0",
+    "homepage": "http://swagger.io",
+    "license": "proprietary",
     "authors": [
         {
-            "name": "Bigcommerce",
-            "homepage": "https://developer.bigcommerce.com/"
+            "name": "Julian Wood",
+            "homepage": "https://tri.be"
         }
     ],
-    "config": {
-        "vendor-dir": "vendor",
-        "preferred-install": {
-            "moderntribe/*": "source",
-            "*": "dist"
-        }
-    },
     "require": {
-        "php": ">=5.6",
+        "php": ">=5.5",
         "ext-curl": "*",
         "ext-json": "*",
         "ext-mbstring": "*",
-        "moderntribe/bigcommerce-api-swagger": "^1.0"
+        "guzzlehttp/guzzle": "^6.2"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^5.6",
+        "squizlabs/php_codesniffer": "~2.6"
     },
     "autoload": {
-        "psr-4": { "BigCommerce\\Api\\" : "src/" }
+        "psr-4": {
+          "BigCommerce\\Widgets\\" : "./clients/Widgets/SwaggerClient-php/lib/",
+          "BigCommerce\\Themes\\" : "./clients/Themes/SwaggerClient-php/lib/",
+          "BigCommerce\\Catalog\\" : "./clients/Catalog/SwaggerClient-php/lib/",
+          "BigCommerce\\OrdersV2\\" : "./clients/OrdersV2/SwaggerClient-php/lib/",
+          "BigCommerce\\OrdersV3\\" : "./clients/OrdersV3/SwaggerClient-php/lib/",
+          "BigCommerce\\PriceLists\\" : "./clients/PriceLists/SwaggerClient-php/lib/",
+          "BigCommerce\\Scripts\\" : "./clients/Scripts/SwaggerClient-php/lib/",
+          "BigCommerce\\Sites\\" : "./clients/Sites/SwaggerClient-php/lib/",
+          "BigCommerce\\StoreInfo\\" : "./clients/StoreInfo/SwaggerClient-php/lib/",
+          "BigCommerce\\Subscribers\\" : "./clients/Subscribers/SwaggerClient-php/lib/",
+          "BigCommerce\\Wishlists\\" : "./clients/Wishlists/SwaggerClient-php/lib/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+          "BigCommerce\\Widgets\\" : "./clients/Widgets/SwaggerClient-php/test/",
+          "BigCommerce\\Themes\\" : "./clients/Themes/SwaggerClient-php/test/",
+          "BigCommerce\\Catalog\\" : "./clients/Catalog/SwaggerClient-php/test/",
+          "BigCommerce\\OrdersV2\\" : "./clients/OrdersV2/SwaggerClient-php/test/",
+          "BigCommerce\\OrdersV3\\" : "./clients/OrdersV3/SwaggerClient-php/test/",
+          "BigCommerce\\PriceLists\\" : "./clients/PriceLists/SwaggerClient-php/test/",
+          "BigCommerce\\Scripts\\" : "./clients/Scripts/SwaggerClient-php/test/",
+          "BigCommerce\\Sites\\" : "./clients/Sites/SwaggerClient-php/test/",
+          "BigCommerce\\StoreInfo\\" : "./clients/StoreInfo/SwaggerClient-php/test/",
+          "BigCommerce\\Subscribers\\" : "./clients/Subscribers/SwaggerClient-php/test/",
+          "BigCommerce\\Wishlists\\" : "./clients/Wishlists/SwaggerClient-php/test/"
+        }
     }
 }
