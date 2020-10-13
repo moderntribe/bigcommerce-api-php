@@ -57,4 +57,10 @@ gulp buildOne --name Sites
 
 ## Including a client in your project
 
+todo: need packagist
 
+```
+composer require tribe/bigcommerce-api
+```
+
+As per samples.
