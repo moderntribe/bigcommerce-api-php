@@ -6,6 +6,8 @@ arch: arm64
 dist: xenial
 before_install:
   - composer install
+  - npm install
+  - gulp testSupport
 stages:
   - name: test
 jobs:
