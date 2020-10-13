@@ -1,13 +1,13 @@
 language: php
 php:
-  - 7.2.28
+  - '7.3'
 os: linux
 arch: arm64
 dist: xenial
 before_install:
   - composer install
   - npm install
-  - gulp testSupport
+  - ./node_modules/.bin/gulp testSupport
 stages:
   - name: test
 jobs:
