@@ -60,7 +60,7 @@ gulp buildOne --name Sites
 todo: need packagist
 
 ```
-composer require tribe/bigcommerce-api
+composer require moderntribe/bigcommerce-api-php
 ```
 
 As per samples.
