@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 Get Transactions
 
-Returns an **order's** transactions.   **Usage Notes** * Depending on the payment method, different information will be available (not all payment gateways return full card or fraud detail). * Transactions are not created for the following payment methods:  * Test Payment Gateway  * PayPal Express  * Amazon Pay
+Returns an **order's** transactions.   **Usage Notes** * Depending on the payment method, different information will be available (not all payment gateways return full card or fraud detail).
 
 ### Example
 ```php
@@ -32,8 +32,8 @@ $apiInstance = new BigCommerce\OrdersV3\Api\TransactionsApi(
     $config
 );
 $order_id = 56; // int | The ID of the `Order` to which the transactions belong.
-$accept = "application/json"; // string | 
-$content_type = "application/json"; // string | 
+$accept = "application/json"; // string |
+$content_type = "application/json"; // string |
 
 try {
     $result = $apiInstance->getTransactions($order_id, $accept, $content_type);
